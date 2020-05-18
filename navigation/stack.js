@@ -6,11 +6,11 @@ import SongScreen from '../screens/SongScreen';
 
 const Stack = createStackNavigator();
 
-const FeedStack = () => {
+const StackNav = () => {
   return (
     <Stack.Navigator
       initialRouteName="Home"
-      headerMode="float"
+      headerMode="screen"
       screenOptions={{
         header: ({ scene, previous, navigation }) => (
           <Header scene={scene} previous={previous} navigation={navigation} />
@@ -31,4 +31,4 @@ const FeedStack = () => {
   );
 };
 
-export default FeedStack;
+export default StackNav;

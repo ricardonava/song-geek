@@ -5,7 +5,7 @@ import {
 } from '@react-navigation/native';
 import React from 'react';
 import { useTheme } from 'react-native-paper';
-import FeedStack from './stack';
+import StackNav from './stack';
 
 export const RootNavigator = () => {
   const theme = useTheme();
@@ -13,7 +13,7 @@ export const RootNavigator = () => {
 
   return (
     <NavigationContainer theme={navigationTheme}>
-      <FeedStack />
+      <StackNav />
     </NavigationContainer>
   );
 };
