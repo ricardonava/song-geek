@@ -1,0 +1,19 @@
+node_modules/**/*
+.expo/*
+npm-debug.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+web-build/
+
+# macOS
+.DS_Store
+
+#Local Backup Files Example
+_BACKUP_/BottomTabNavigator.js
+_BACKUP_/HomeScreen.js
+_BACKUP_/LinksScreen.js
+_BACKUP_/TabBarIcon.js
