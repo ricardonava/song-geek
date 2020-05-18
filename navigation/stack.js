@@ -7,14 +7,6 @@ import SongScreen from '../screens/SongScreen';
 const Stack = createStackNavigator();
 
 const Header = ({ scene, previous, navigation, theme }) => {
-  const { options } = scene.descriptor;
-  const title =
-    options.headerTitle !== undefined
-      ? options.headerTitle
-      : options.title !== undefined
-      ? options.title
-      : scene.route.name;
-
   return (
     <Appbar.Header>
       {previous && (
