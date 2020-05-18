@@ -4,18 +4,18 @@ import { Surface } from 'react-native-paper';
 
 const styles = StyleSheet.create({
   logo: {
-    width: 66,
-    height: 58
+    width: 300,
+    height: 300
   }
 });
 
-const AlbumCover = () => {
+const AlbumCover = ({ images }) => {
   return (
     <Surface>
       <Image
         style={styles.logo}
         source={{
-          uri: 'https://reactnative.dev/img/tiny_logo.png'
+          uri: images[1]
         }}
       />
     </Surface>
