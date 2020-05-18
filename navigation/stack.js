@@ -1,39 +1,19 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
-import { Appbar, useTheme } from 'react-native-paper';
+import Header from '../components/Header';
 import HomeScreen from '../screens/HomeScreen';
 import SongScreen from '../screens/SongScreen';
 
 const Stack = createStackNavigator();
 
-const Header = ({ scene, previous, navigation, theme }) => {
-  return (
-    <Appbar.Header>
-      {previous && (
-        <Appbar.BackAction
-          onPress={navigation.goBack}
-          color={theme.colors.primary}
-        />
-      )}
-    </Appbar.Header>
-  );
-};
-
 const FeedStack = () => {
-  const theme = useTheme();
-
   return (
     <Stack.Navigator
       initialRouteName="Home"
       headerMode="screen"
       screenOptions={{
         header: ({ scene, previous, navigation }) => (
-          <Header
-            scene={scene}
-            previous={previous}
-            navigation={navigation}
-            theme={theme}
-          />
+          <Header scene={scene} previous={previous} navigation={navigation} />
         )
       }}
     >
