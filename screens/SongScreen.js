@@ -8,7 +8,7 @@ const SongScreen = () => {
   const { artists, duration_ms: duration, id, name, popularity } = song;
   return (
     <View>
-      <AlbumCover image={images} />
+      <AlbumCover images={images} />
     </View>
   );
 };
