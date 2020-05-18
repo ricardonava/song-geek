@@ -10,7 +10,7 @@ const FeedStack = () => {
   return (
     <Stack.Navigator
       initialRouteName="Home"
-      headerMode="screen"
+      headerMode="float"
       screenOptions={{
         header: ({ scene, previous, navigation }) => (
           <Header scene={scene} previous={previous} navigation={navigation} />
