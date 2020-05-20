@@ -14,13 +14,6 @@ function setTitle(options, scene) {
   return title;
 }
 
-const SongHeader = ({ goBack, previous, navigate }) =>
-  previous ? (
-    <Appbar.BackAction onPress={goBack} />
-  ) : (
-    <Appbar.Action icon="home" onPress={() => navigate('Home')} />
-  );
-
 const Header = ({ scene, previous, navigation }) => {
   const { goBack, navigate } = navigation;
   const { options } = scene.descriptor;
@@ -29,9 +22,12 @@ const Header = ({ scene, previous, navigation }) => {
 
   return (
     <Appbar.Header>
-      {name !== 'Home' && (
-        <SongHeader goBack={goBack} previous={previous} navigate={navigate} />
-      )}
+      {name !== 'Home' &&
+        (previous ? (
+          <Appbar.BackAction onPress={goBack} />
+        ) : (
+          <Appbar.Action icon="home" onPress={() => navigate('Home')} />
+        ))}
       <Appbar.Content title={title} />
     </Appbar.Header>
   );
