@@ -1,3 +1,4 @@
+/* eslint-disable no-bitwise */
 import PropTypes from 'prop-types';
 import React from 'react';
 import { StyleSheet } from 'react-native';
@@ -13,6 +14,14 @@ const styles = StyleSheet.create({
   }
 });
 
+function msToTime(s) {
+  // Pad to 2 or 3 digits, default is 2
+  const pad = (n, z = 2) => `00${n}`.slice(-z);
+  return `${pad((s / 3.6e6) | 0)}:${pad(((s % 3.6e6) / 6e4) | 0)}:${pad(
+    ((s % 6e4) / 1000) | 0
+  )}.${pad(s % 1000, 3)}`;
+}
+
 const SongInfo = ({
   name,
   albumName,
@@ -21,14 +30,14 @@ const SongInfo = ({
   duration,
   popularity
 }) => {
-  const durationMin = duration / 60000;
+  const durationTime = msToTime(duration);
   return (
     <Surface style={styles.surface}>
       <Title>{`Song Name: ${name}`}</Title>
       <Subheading>{`Artist Name: ${artists[0].name}`}</Subheading>
       <Text>{`Album Name: ${albumName}`}</Text>
       <Text>{`Release Date: ${releaseDate}`}</Text>
-      <Text>{`Duration: ${durationMin.toFixed(2)}`}</Text>
+      <Text>{`Duration: ${durationTime}`}</Text>
       <Text>{`Popularity: ${popularity}`}</Text>
     </Surface>
   );
