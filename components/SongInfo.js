@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import { Surface, Title, Subheading, Text } from 'react-native-paper';
+import { Subheading, Surface, Text, Title } from 'react-native-paper';
 
 const styles = StyleSheet.create({
   surface: {
@@ -19,7 +19,6 @@ const SongInfo = ({
   releaseDate,
   artists,
   duration,
-  id,
   popularity
 }) => {
   const durationMin = duration / 60000;
@@ -36,7 +35,13 @@ const SongInfo = ({
 };
 
 SongInfo.propTypes = {
-  name: PropTypes.string.isRequired
+  name: PropTypes.string.isRequired,
+  albumName: PropTypes.string.isRequired,
+  releaseDate: PropTypes.string.isRequired,
+  duration: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
+  popularity: PropTypes.number.isRequired,
+  artists: PropTypes.arrayOf(PropTypes.objectOf).isRequired
 };
 
 export default SongInfo;
