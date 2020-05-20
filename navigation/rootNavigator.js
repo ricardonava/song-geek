@@ -5,8 +5,8 @@ import {
 } from '@react-navigation/native';
 import React from 'react';
 import { useTheme } from 'react-native-paper';
-import StackNav from './stack';
 import LinkingConfiguration from './LinkingConfiguration';
+import StackNav from './stackNav';
 
 export const RootNavigator = () => {
   const theme = useTheme();

@@ -21,7 +21,7 @@ const StackNav = () => {
       <Stack.Screen
         name="Home"
         component={HomeScreen}
-        options={{ headerTitle: 'Homes' }}
+        options={{ headerTitle: 'Home' }}
       />
       <Stack.Screen
         name="Song"
@@ -33,12 +33,14 @@ const StackNav = () => {
 };
 
 StackNav.defaultProps = {
-  previous: undefined
+  previous: undefined,
+  scene: undefined,
+  navigation: undefined
 };
 
 StackNav.propTypes = {
-  scene: PropTypes.objectOf(Object).isRequired,
-  navigation: PropTypes.objectOf(PropTypes.func).isRequired,
+  scene: PropTypes.objectOf(Object),
+  navigation: PropTypes.objectOf(PropTypes.func),
   previous: PropTypes.objectOf(Object)
 };
 

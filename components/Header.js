@@ -14,27 +14,38 @@ function setTitle(options, scene) {
   return title;
 }
 
-const Header = ({ scene, previous, navigation }) => {
-  const { goBack } = navigation;
-  const { options } = scene.descriptor;
+const SongHeader = ({ goBack, previous, navigate }) =>
+  previous ? (
+    <Appbar.BackAction onPress={goBack} />
+  ) : (
+    <Appbar.Action icon="home" onPress={() => navigate('Home')} />
+  );
 
+const Header = ({ scene, previous, navigation }) => {
+  const { goBack, navigate } = navigation;
+  const { options } = scene.descriptor;
+  const { name } = scene.route;
   const title = setTitle(options, scene);
 
   return (
     <Appbar.Header>
-      {previous && <Appbar.BackAction onPress={goBack} />}
+      {name !== 'Home' && (
+        <SongHeader goBack={goBack} previous={previous} navigate={navigate} />
+      )}
       <Appbar.Content title={title} />
     </Appbar.Header>
   );
 };
 
 Header.defaultProps = {
-  previous: undefined
+  previous: undefined,
+  scene: undefined,
+  navigation: undefined
 };
 
 Header.propTypes = {
-  scene: PropTypes.objectOf(Object).isRequired,
-  navigation: PropTypes.objectOf(PropTypes.func).isRequired,
+  scene: PropTypes.objectOf(Object),
+  navigation: PropTypes.objectOf(PropTypes.func),
   previous: PropTypes.objectOf(Object)
 };
 
