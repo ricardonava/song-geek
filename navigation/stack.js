@@ -1,4 +1,5 @@
 import { createStackNavigator } from '@react-navigation/stack';
+import { PropTypes } from 'prop-types';
 import React from 'react';
 import Header from '../components/Header';
 import HomeScreen from '../screens/HomeScreen';
@@ -20,7 +21,7 @@ const StackNav = () => {
       <Stack.Screen
         name="Home"
         component={HomeScreen}
-        options={{ headerTitle: 'Home' }}
+        options={{ headerTitle: 'Homes' }}
       />
       <Stack.Screen
         name="Song"
@@ -29,6 +30,16 @@ const StackNav = () => {
       />
     </Stack.Navigator>
   );
+};
+
+StackNav.defaultProps = {
+  previous: undefined
+};
+
+StackNav.propTypes = {
+  scene: PropTypes.objectOf(Object).isRequired,
+  navigation: PropTypes.objectOf(PropTypes.func).isRequired,
+  previous: PropTypes.objectOf(Object)
 };
 
 export default StackNav;

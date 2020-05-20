@@ -5,15 +5,21 @@ import PropTypes from 'prop-types';
 
 const styles = StyleSheet.create({
   logo: {
-    alignSelf: 'center',
     width: 300,
     height: 300
+  },
+  surface: {
+    alignSelf: 'center',
+    width: 320,
+    height: 320,
+    alignItems: 'center',
+    justifyContent: 'center'
   }
 });
 
 const AlbumCover = ({ images }) => {
   return (
-    <Surface>
+    <Surface style={styles.surface}>
       <Image
         style={styles.logo}
         source={{

@@ -6,8 +6,8 @@ export default {
     Root: {
       path: 'home',
       screens: {
-        Home: 'library',
-        Links: 'links'
+        Home: 'Home',
+        Song: 'Song'
       }
     }
   }
