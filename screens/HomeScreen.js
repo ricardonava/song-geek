@@ -1,3 +1,4 @@
+import { PropTypes } from 'prop-types';
 import React from 'react';
 import { Button, Text, View } from 'react-native';
 
@@ -11,6 +12,14 @@ const HomeScreen = ({ navigation }) => {
       />
     </View>
   );
+};
+
+HomeScreen.defaultProps = {
+  navigation: undefined
+};
+
+HomeScreen.propTypes = {
+  navigation: PropTypes.objectOf(PropTypes.func)
 };
 
 export default HomeScreen;

@@ -10,7 +10,15 @@ const SongScreen = () => {
   return (
     <View>
       <AlbumCover images={images} />
-      {/* <SongInfo /> */}
+      <SongInfo
+        albumName={albumName}
+        releaseDate={releaseDate}
+        name={name}
+        artists={artists}
+        duration={duration}
+        id={id}
+        popularity={popularity}
+      />
     </View>
   );
 };

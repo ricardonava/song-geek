@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unused-prop-types */
 import { createStackNavigator } from '@react-navigation/stack';
 import { PropTypes } from 'prop-types';
 import React from 'react';
