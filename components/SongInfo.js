@@ -25,12 +25,12 @@ const SongInfo = ({
   const durationMin = duration / 60000;
   return (
     <Surface style={styles.surface}>
-      <Title>{name}</Title>
-      <Subheading>{artists[0].name}</Subheading>
-      <Text>{albumName}</Text>
-      <Text>{releaseDate}</Text>
-      <Text>{durationMin.toFixed(2)}</Text>
-      <Text>{popularity}</Text>
+      <Title>{`Song Name: ${name}`}</Title>
+      <Subheading>{`Artist Name: ${artists[0].name}`}</Subheading>
+      <Text>{`Album Name: ${albumName}`}</Text>
+      <Text>{`Release Date: ${releaseDate}`}</Text>
+      <Text>{`Duration: ${durationMin.toFixed(2)}`}</Text>
+      <Text>{`Popularity: ${popularity}`}</Text>
     </Surface>
   );
 };
