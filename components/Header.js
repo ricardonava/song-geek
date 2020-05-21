@@ -5,7 +5,7 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   header: {
-    elevation: 5
+    elevation: 20
   }
 });
 

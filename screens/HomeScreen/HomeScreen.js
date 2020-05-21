@@ -1,13 +1,19 @@
 import { PropTypes } from 'prop-types';
 import React from 'react';
-import { Button } from 'react-native';
+import { Button, StyleSheet } from 'react-native';
 import { Surface } from 'react-native-paper';
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
+  }
+});
 
 const HomeScreen = ({ navigation }) => {
   return (
-    <Surface
-      style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}
-    >
+    <Surface style={styles.container}>
       <Button
         title="Go to Song"
         onPress={() => navigation && navigation.push('Song')}

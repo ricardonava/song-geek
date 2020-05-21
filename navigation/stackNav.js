@@ -3,8 +3,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { PropTypes } from 'prop-types';
 import React from 'react';
 import Header from '../components/Header';
-import HomeScreen from '../screens/HomeScreen';
-import SongScreen from '../screens/SongScreen';
+import HomeScreen from '../screens/HomeScreen/HomeScreen';
+import SongScreen from '../screens/SongScreen/SongScreen';
 
 const Stack = createStackNavigator();
 
