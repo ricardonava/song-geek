@@ -48,7 +48,27 @@
         "spotify": "https://open.spotify.com/artist/6sFIWsNpZYqfjUpaCgueju"
       },
       "href": "https://api.spotify.com/v1/artists/6sFIWsNpZYqfjUpaCgueju",
+      "id": "6sFIWsNpZYqfjUpaCguej9",
+      "name": "Carly Rae Jepsen",
+      "type": "artist",
+      "uri": "spotify:artist:6sFIWsNpZYqfjUpaCgueju"
+    },
+    {
+      "external_urls": {
+        "spotify": "https://open.spotify.com/artist/6sFIWsNpZYqfjUpaCgueju"
+      },
+      "href": "https://api.spotify.com/v1/artists/6sFIWsNpZYqfjUpaCgueju",
       "id": "6sFIWsNpZYqfjUpaCgueju",
+      "name": "Carly Rae Jepsen",
+      "type": "artist",
+      "uri": "spotify:artist:6sFIWsNpZYqfjUpaCgueju"
+    },
+    {
+      "external_urls": {
+        "spotify": "https://open.spotify.com/artist/6sFIWsNpZYqfjUpaCgueju"
+      },
+      "href": "https://api.spotify.com/v1/artists/6sFIWsNpZYqfjUpaCgueju",
+      "id": "6sFIWsNpZYqfjUpaCguej0",
       "name": "Carly Rae Jepsen",
       "type": "artist",
       "uri": "spotify:artist:6sFIWsNpZYqfjUpaCgueju"
