@@ -1,105 +1,76 @@
 {
   "album": {
-    "album_type": "single",
+    "album_type": "compilation",
     "artists": [
       {
         "external_urls": {
-          "spotify": "https://open.spotify.com/artist/6sFIWsNpZYqfjUpaCgueju"
+          "spotify": "https://open.spotify.com/artist/0LyfQWJT6nXafLPZqxe9Of"
         },
-        "href": "https://api.spotify.com/v1/artists/6sFIWsNpZYqfjUpaCgueju",
-        "id": "6sFIWsNpZYqfjUpaCgueju",
-        "name": "Carly Rae Jepsen",
+        "href": "https://api.spotify.com/v1/artists/0LyfQWJT6nXafLPZqxe9Of",
+        "id": "0LyfQWJT6nXafLPZqxe9Of",
+        "name": "Various Artists",
         "type": "artist",
-        "uri": "spotify:artist:6sFIWsNpZYqfjUpaCgueju"
+        "uri": "spotify:artist:0LyfQWJT6nXafLPZqxe9Of"
       }
     ],
     "external_urls": {
-      "spotify": "https://open.spotify.com/album/0tGPJ0bkWOUmH7MEOR77qc"
+      "spotify": "https://open.spotify.com/album/0VM8xHI5Xgsyyzv3My9gm2"
     },
-    "href": "https://api.spotify.com/v1/albums/0tGPJ0bkWOUmH7MEOR77qc",
-    "id": "0tGPJ0bkWOUmH7MEOR77qc",
+    "href": "https://api.spotify.com/v1/albums/0VM8xHI5Xgsyyzv3My9gm2",
+    "id": "0VM8xHI5Xgsyyzv3My9gm2",
     "images": [
       {
         "height": 640,
-        "url": "https://i.scdn.co/image/ab67616d0000b2737359994525d219f64872d3b1",
+        "url": "https://i.scdn.co/image/ab67616d0000b27381b97e125acd2239b8d55bce",
         "width": 640
       },
       {
         "height": 300,
-        "url": "https://i.scdn.co/image/ab67616d00001e027359994525d219f64872d3b1",
+        "url": "https://i.scdn.co/image/ab67616d00001e0281b97e125acd2239b8d55bce",
         "width": 300
       },
       {
         "height": 64,
-        "url": "https://i.scdn.co/image/ab67616d000048517359994525d219f64872d3b1",
+        "url": "https://i.scdn.co/image/ab67616d0000485181b97e125acd2239b8d55bce",
         "width": 64
       }
     ],
-    "name": "Cut To The Feeling",
-    "release_date": "2017-05-26",
+    "name": "Dance Music 80s",
+    "release_date": "2018-08-24",
     "release_date_precision": "day",
-    "total_tracks": 1,
+    "total_tracks": 26,
     "type": "album",
-    "uri": "spotify:album:0tGPJ0bkWOUmH7MEOR77qc"
+    "uri": "spotify:album:0VM8xHI5Xgsyyzv3My9gm2"
   },
   "artists": [
     {
       "external_urls": {
-        "spotify": "https://open.spotify.com/artist/6sFIWsNpZYqfjUpaCgueju"
+        "spotify": "https://open.spotify.com/artist/2ga5ADaBpljQ3YrCh99ZMq"
       },
-      "href": "https://api.spotify.com/v1/artists/6sFIWsNpZYqfjUpaCgueju",
-      "id": "6sFIWsNpZYqfjUpaCguej9",
-      "name": "Carly Rae Jepsen",
+      "href": "https://api.spotify.com/v1/artists/2ga5ADaBpljQ3YrCh99ZMq",
+      "id": "2ga5ADaBpljQ3YrCh99ZMq",
+      "name": "Jocelyn Brown",
       "type": "artist",
-      "uri": "spotify:artist:6sFIWsNpZYqfjUpaCgueju"
-    },
-    {
-      "external_urls": {
-        "spotify": "https://open.spotify.com/artist/6sFIWsNpZYqfjUpaCgueju"
-      },
-      "href": "https://api.spotify.com/v1/artists/6sFIWsNpZYqfjUpaCgueju",
-      "id": "6sFIWsNpZYqfjUpaCgueju",
-      "name": "Carly Rae Jepsen",
-      "type": "artist",
-      "uri": "spotify:artist:6sFIWsNpZYqfjUpaCgueju"
-    },
-    {
-      "external_urls": {
-        "spotify": "https://open.spotify.com/artist/6sFIWsNpZYqfjUpaCgueju"
-      },
-      "href": "https://api.spotify.com/v1/artists/6sFIWsNpZYqfjUpaCgueju",
-      "id": "6sFIWsNpZYqfjUpaCguej0",
-      "name": "Carly Rae Jepsen",
-      "type": "artist",
-      "uri": "spotify:artist:6sFIWsNpZYqfjUpaCgueju"
+      "uri": "spotify:artist:2ga5ADaBpljQ3YrCh99ZMq"
     }
   ],
   "disc_number": 1,
-  "duration_ms": 207959,
+  "duration_ms": 343333,
   "explicit": false,
   "external_ids": {
-    "isrc": "USUM71703861"
+    "isrc": "USWB19902702"
   },
   "external_urls": {
-    "spotify": "https://open.spotify.com/track/6EJiVf7U0p1BBfs0qqeb1f"
+    "spotify": "https://open.spotify.com/track/6D3f7IQc5IwER6F4AmWzfD"
   },
-  "href": "https://api.spotify.com/v1/tracks/6EJiVf7U0p1BBfs0qqeb1f",
-  "id": "6EJiVf7U0p1BBfs0qqeb1f",
+  "href": "https://api.spotify.com/v1/tracks/6D3f7IQc5IwER6F4AmWzfD",
+  "id": "6D3f7IQc5IwER6F4AmWzfD",
   "is_local": false,
   "is_playable": true,
-  "linked_from": {
-    "external_urls": {
-      "spotify": "https://open.spotify.com/track/11dFghVXANMlKmJXsNCbNl"
-    },
-    "href": "https://api.spotify.com/v1/tracks/11dFghVXANMlKmJXsNCbNl",
-    "id": "11dFghVXANMlKmJXsNCbNl",
-    "type": "track",
-    "uri": "spotify:track:11dFghVXANMlKmJXsNCbNl"
-  },
-  "name": "Cut To The Feeling",
-  "popularity": 67,
-  "preview_url": null,
-  "track_number": 1,
+  "name": "Love's Gonna Get You",
+  "popularity": 8,
+  "preview_url": "https://p.scdn.co/mp3-preview/180285da3320b326a041ff41735dd51000d3685c?cid=774b29d4f13844c495f206cafdad9c86",
+  "track_number": 4,
   "type": "track",
-  "uri": "spotify:track:6EJiVf7U0p1BBfs0qqeb1f"
+  "uri": "spotify:track:6D3f7IQc5IwER6F4AmWzfD"
 }

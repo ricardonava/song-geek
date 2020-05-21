@@ -1,32 +1,22 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Image, StyleSheet } from 'react-native';
-import { Surface } from 'react-native-paper';
-import PropTypes from 'prop-types';
 
 const styles = StyleSheet.create({
   logo: {
-    width: 300,
-    height: 300
-  },
-  surface: {
-    alignSelf: 'center',
-    width: 320,
-    height: 320,
-    alignItems: 'center',
-    justifyContent: 'center'
+    width: 150,
+    height: 150
   }
 });
 
 const AlbumCover = ({ images }) => {
   return (
-    <Surface style={styles.surface}>
-      <Image
-        style={styles.logo}
-        source={{
-          uri: images[1].url
-        }}
-      />
-    </Surface>
+    <Image
+      style={styles.logo}
+      source={{
+        uri: images[1].url
+      }}
+    />
   );
 };
 
