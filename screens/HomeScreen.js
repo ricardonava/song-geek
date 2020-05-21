@@ -1,16 +1,18 @@
 import { PropTypes } from 'prop-types';
 import React from 'react';
-import { Button, Text, View } from 'react-native';
+import { Button } from 'react-native';
+import { Surface } from 'react-native-paper';
 
 const HomeScreen = ({ navigation }) => {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>HomeScreen</Text>
+    <Surface
+      style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}
+    >
       <Button
         title="Go to Song"
         onPress={() => navigation && navigation.push('Song')}
       />
-    </View>
+    </Surface>
   );
 };
 

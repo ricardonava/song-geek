@@ -1,13 +1,14 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { Headline, Subheading, Text, Title } from 'react-native-paper';
+import { Headline, Subheading, Text, Title, Surface } from 'react-native-paper';
 import AlbumCover from '../components/AlbumCover';
 import song from '../song.json';
+import msToTime from '../utilities/msToTime';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 15
+    padding: 5
   },
   trackNameContainer: { padding: 10 },
   artistsContainer: {
@@ -22,20 +23,12 @@ const styles = StyleSheet.create({
   trackNameColumns: { width: '50%' }
 });
 
-function msToTime(s) {
-  // Pad to 2 or 3 digits, default is 2
-  const pad = (n, z = 2) => `00${n}`.slice(-z);
-  return `${pad((s / 3.6e6) | 0)}:${pad(((s % 3.6e6) / 6e4) | 0)}:${pad(
-    ((s % 6e4) / 1000) | 0
-  )}.${pad(s % 1000, 3)}`;
-}
-
 const SongScreen = () => {
   const { name: albumName, release_date: releaseDate, images } = song.album;
   const { artists, duration_ms: duration, id, name, popularity } = song;
-  const durationTime = msToTime(duration);
+  const timeFormat = msToTime(duration);
   return (
-    <View style={styles.container}>
+    <Surface style={styles.container}>
       <View style={styles.trackNameContainer}>
         <Subheading>TRACK </Subheading>
         <View style={styles.trackName}>
@@ -56,7 +49,7 @@ const SongScreen = () => {
         </View>
         <View style={styles.trackNameColumns}>
           <Subheading>LENGTH </Subheading>
-          <Text>{durationTime} </Text>
+          <Text>{timeFormat} </Text>
           <Subheading>RELEASED </Subheading>
           <Text>{releaseDate} </Text>
           <Subheading>BPM </Subheading>
@@ -69,7 +62,7 @@ const SongScreen = () => {
           <Text>{albumName} </Text>
         </View>
       </View>
-    </View>
+    </Surface>
   );
 };
 
