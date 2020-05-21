@@ -1,20 +1,24 @@
 import React from 'react';
-
-import { View, StyleSheet } from 'react-native';
-import { Subheading, Headline, Title, Text } from 'react-native-paper';
-
+import { StyleSheet, View } from 'react-native';
+import { Headline, Subheading, Text, Title } from 'react-native-paper';
 import AlbumCover from '../components/AlbumCover';
-
 import song from '../song.json';
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    padding: 15
   },
-  trackNameContainer: { backgroundColor: '#00aca1' },
-  artistsContainer: { backgroundColor: '#f7c9cf', flexDirection: 'row' },
-  trackInfo: { backgroundColor: '#8b7e66', flexDirection: 'row' },
-  trackName: { flexDirection: 'row' },
+  trackNameContainer: { padding: 10 },
+  artistsContainer: {
+    flexDirection: 'row',
+    padding: 10
+  },
+  trackInfoContainer: {
+    flexDirection: 'row',
+    padding: 10
+  },
+  trackName: { flexDirection: 'row', flexWrap: 'wrap' },
   trackNameColumns: { width: '50%' }
 });
 
@@ -45,7 +49,7 @@ const SongScreen = () => {
           <Text key={artist.id}>{artist.name} </Text>
         ))}
       </View>
-      <View style={styles.trackInfo}>
+      <View style={styles.trackInfoContainer}>
         <View style={styles.trackNameColumns}>
           <Subheading>RELEASE </Subheading>
           <AlbumCover images={images} />
