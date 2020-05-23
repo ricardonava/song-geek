@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { Platform, StatusBar, StyleSheet, View } from 'react-native';
+import { Platform, StatusBar, StyleSheet } from 'react-native';
 import { DarkTheme, Provider as PaperProvider } from 'react-native-paper';
+import styled from 'styled-components/native';
 import useCachedResources from './hooks/useCachedResources';
 import { RootNavigator } from './navigation/rootNavigator';
 
@@ -9,6 +10,10 @@ const styles = StyleSheet.create({
     flex: 1
   }
 });
+
+const Container = styled.View`
+  flex: 1;
+`;
 
 const theme = {
   ...DarkTheme,
@@ -23,10 +28,10 @@ export default function App() {
   }
   return (
     <PaperProvider theme={theme}>
-      <View style={styles.container}>
+      <Container>
         {Platform.OS === 'ios' && <StatusBar barStyle="dark-content" />}
         <RootNavigator />
-      </View>
+      </Container>
     </PaperProvider>
   );
 }

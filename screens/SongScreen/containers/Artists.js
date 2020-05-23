@@ -1,23 +1,21 @@
 import { PropTypes } from 'prop-types';
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
 import { Subheading, Text } from 'react-native-paper';
+import styled from 'styled-components/native';
 
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    padding: 10
-  }
-});
+const Container = styled.View`
+  flex-direction: row;
+  padding: 10px;
+`;
 
 const TrackName = ({ artists }) => {
   return (
-    <View style={styles.container}>
+    <Container>
       <Subheading>ARTISTS </Subheading>
       {artists.map((artist) => (
         <Text key={artist.id}>{artist.name} </Text>
       ))}
-    </View>
+    </Container>
   );
 };
 

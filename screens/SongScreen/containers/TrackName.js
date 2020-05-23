@@ -1,21 +1,30 @@
 import { PropTypes } from 'prop-types';
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { Headline, Subheading } from 'react-native-paper';
+import styled from 'styled-components/native';
 
 const styles = StyleSheet.create({
-  container: { padding: 10 },
   trackName: { flexDirection: 'row', flexWrap: 'wrap' }
 });
 
+const Container = styled.View`
+  padding: 10px;
+`;
+
+const Name = styled.View`
+  flex-direction: row;
+  flex-wrap: wrap;
+`;
+
 const TrackName = ({ name }) => {
   return (
-    <View style={styles.container}>
+    <Container>
       <Subheading>TRACK </Subheading>
-      <View style={styles.trackName}>
+      <Name style={styles.trackName}>
         <Headline>{name} </Headline>
-      </View>
-    </View>
+      </Name>
+    </Container>
   );
 };
 

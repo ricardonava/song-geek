@@ -1,24 +1,23 @@
 import { PropTypes } from 'prop-types';
 import React from 'react';
-import { Button, StyleSheet } from 'react-native';
+import { Button } from 'react-native';
 import { Surface } from 'react-native-paper';
+import styled from 'styled-components/native';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
-});
+const Container = styled(Surface)`
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+`;
 
 const HomeScreen = ({ navigation }) => {
   return (
-    <Surface style={styles.container}>
+    <Container>
       <Button
         title="Go to Song"
         onPress={() => navigation && navigation.push('Song')}
       />
-    </Surface>
+    </Container>
   );
 };
 

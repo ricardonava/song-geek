@@ -1,13 +1,11 @@
 import { PropTypes } from 'prop-types';
 import React from 'react';
 import { Appbar } from 'react-native-paper';
-import { StyleSheet } from 'react-native';
+import styled from 'styled-components/native';
 
-const styles = StyleSheet.create({
-  header: {
-    elevation: 20
-  }
-});
+const AppbarHeader = styled(Appbar.Header)`
+  elevation: 20;
+`;
 
 function setTitle(options, scene) {
   let title = '';
@@ -28,7 +26,7 @@ const Header = ({ scene, previous, navigation }) => {
   const title = setTitle(options, scene);
 
   return (
-    <Appbar.Header style={styles.header}>
+    <AppbarHeader>
       {name !== 'Home' &&
         (previous ? (
           <Appbar.BackAction onPress={goBack} />
@@ -36,7 +34,7 @@ const Header = ({ scene, previous, navigation }) => {
           <Appbar.Action icon="home" onPress={() => navigate('Home')} />
         ))}
       <Appbar.Content title={title} />
-    </Appbar.Header>
+    </AppbarHeader>
   );
 };
 

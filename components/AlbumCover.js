@@ -1,18 +1,16 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Image, StyleSheet } from 'react-native';
+import { Image } from 'react-native';
+import styled from 'styled-components/native';
 
-const styles = StyleSheet.create({
-  logo: {
-    width: 150,
-    height: 150
-  }
-});
+const Logo = styled(Image)`
+  width: 150px;
+  height: 150px;
+`;
 
 const AlbumCover = ({ images }) => {
   return (
-    <Image
-      style={styles.logo}
+    <Logo
       source={{
         uri: images[1].url
       }}
