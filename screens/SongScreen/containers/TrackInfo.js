@@ -1,16 +1,17 @@
 import { PropTypes } from 'prop-types';
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
 import { Subheading, Text } from 'react-native-paper';
+import styled from 'styled-components/native';
 import AlbumCover from '../../../components/AlbumCover';
 
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    padding: 10
-  },
-  infoColumns: { width: '50%' }
-});
+const Container = styled.View`
+  flex-direction: row;
+  padding: 10px;
+`;
+
+const Column = styled.View`
+  width: 50%;
+`;
 
 const TrackName = ({
   images,
@@ -21,12 +22,12 @@ const TrackName = ({
   albumName
 }) => {
   return (
-    <View style={styles.container}>
-      <View style={styles.infoColumns}>
+    <Container>
+      <Column>
         <Subheading>RELEASE </Subheading>
         <AlbumCover images={images} />
-      </View>
-      <View style={styles.infoColumns}>
+      </Column>
+      <Column>
         <Subheading>LENGTH </Subheading>
         <Text>{duration} </Text>
         <Subheading>RELEASED </Subheading>
@@ -39,8 +40,8 @@ const TrackName = ({
         <Text>{id} </Text>
         <Subheading>LABEL </Subheading>
         <Text>{albumName} </Text>
-      </View>
-    </View>
+      </Column>
+    </Container>
   );
 };
 
