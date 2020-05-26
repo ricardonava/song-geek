@@ -1,15 +1,9 @@
 import * as React from 'react';
-import { Platform, StatusBar, StyleSheet } from 'react-native';
+import { Platform, StatusBar } from 'react-native';
 import { DarkTheme, Provider as PaperProvider } from 'react-native-paper';
 import styled from 'styled-components/native';
 import useCachedResources from './hooks/useCachedResources';
 import { RootNavigator } from './navigation/rootNavigator';
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  }
-});
 
 const Container = styled.View`
   flex: 1;
