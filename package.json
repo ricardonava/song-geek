@@ -37,7 +37,8 @@
     "react-native-screens": "~2.2.0",
     "react-native-web": "~0.11.7",
     "spotify-web-api-node": "^4.0.0",
-    "styled-components": "^5.1.0"
+    "styled-components": "^5.1.0",
+    "expo-secure-store": "~8.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.8.6",
