@@ -3,7 +3,7 @@ import React from 'react';
 import { Button } from 'react-native-paper';
 import styled from 'styled-components/native';
 import * as SecureStore from 'expo-secure-store';
-import getToken from '../../utilities/getAuthCode';
+import getToken from '../../utilities/getTokens';
 
 const LoginButton = styled(Button)`
   align-self: center;
