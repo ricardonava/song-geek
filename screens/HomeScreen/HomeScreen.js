@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Surface } from 'react-native-paper';
 import styled from 'styled-components/native';
+// import * as SecureStore from 'expo-secure-store';
+
 import LikedSongs from './LikedSongs';
 import Login from './Login';
 
@@ -9,6 +11,16 @@ const Container = styled(Surface)`
   align-items: center;
   justify-content: center;
 `;
+
+// async function hasLocalToken() {
+//   const localToken = await SecureStore.getItemAsync('token');
+//   if (localToken === null) {
+
+//   } else {
+
+//   }
+
+// }
 
 const HomeScreen = () => {
   const [token, setToken] = useState(undefined);
