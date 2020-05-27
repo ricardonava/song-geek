@@ -19,7 +19,7 @@ async function fetchSongs(setSongs, token) {
   setSongs(songs);
 }
 
-const Item = ({ name, artist, cover }) => {
+const Item = ({ name, artist, cover, id }) => {
   return (
     <>
       <List.Item
@@ -28,7 +28,7 @@ const Item = ({ name, artist, cover }) => {
         left={() => <AlbumCover source={{ uri: cover }} />}
         // eslint-disable-next-line react/jsx-props-no-spreading
         right={(props) => <List.Icon {...props} icon="dots-vertical" />}
-        onPress={() => console.log('Pressed Track')}
+        onPress={() => console.log(id)}
       />
       <Divider />
     </>
@@ -51,7 +51,12 @@ const LikedSongs = ({ token }) => {
           <FlatList
             data={songs}
             renderItem={({ item }) => (
-              <Item name={item.name} artist={item.artist} cover={item.cover} />
+              <Item
+                name={item.name}
+                artist={item.artist}
+                cover={item.cover}
+                id={item.id}
+              />
             )}
             keyExtractor={(item) => item.id}
           />
@@ -64,7 +69,8 @@ const LikedSongs = ({ token }) => {
 Item.propTypes = {
   name: PropTypes.string.isRequired,
   artist: PropTypes.string.isRequired,
-  cover: PropTypes.string.isRequired
+  cover: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired
 };
 
 LikedSongs.propTypes = {
