@@ -22,7 +22,7 @@ const StackNav = () => {
       <Stack.Screen
         name="Home"
         component={HomeScreen}
-        options={{ headerTitle: 'Home' }}
+        options={{ headerTitle: 'Song Geek' }}
       />
       <Stack.Screen
         name="Song"

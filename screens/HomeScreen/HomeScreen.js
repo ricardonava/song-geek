@@ -1,8 +1,9 @@
 import { PropTypes } from 'prop-types';
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from 'react-native';
-import { Surface } from 'react-native-paper';
+import { Surface, Text } from 'react-native-paper';
 import styled from 'styled-components/native';
+import getToken from '../../utilities/getAuthCode';
 
 const Container = styled(Surface)`
   flex: 1;
@@ -10,13 +11,20 @@ const Container = styled(Surface)`
   justify-content: center;
 `;
 
+const authWithSpotify = async (setToken) => {
+  const result = await getToken();
+  setToken(result);
+};
+
 const HomeScreen = ({ navigation }) => {
+  const [token, setToken] = useState(undefined);
   return (
     <Container>
-      <Button
-        title="Go to Song"
-        onPress={() => navigation && navigation.push('Song')}
-      />
+      {!token ? (
+        <Button title="Login" onPress={() => authWithSpotify(setToken)} />
+      ) : (
+        <Text>Logged In</Text>
+      )}
     </Container>
   );
 };
