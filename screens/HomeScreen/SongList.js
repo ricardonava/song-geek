@@ -37,7 +37,7 @@ const Item = ({ name, artists, cover, id, navigation }) => {
   );
 };
 
-const LikedSongs = ({ token, navigation }) => {
+const SongList = ({ token, navigation }) => {
   const [songs, setSongs] = useState(undefined);
 
   useEffect(() => {
@@ -76,8 +76,8 @@ Item.propTypes = {
   id: PropTypes.string.isRequired
 };
 
-LikedSongs.propTypes = {
+SongList.propTypes = {
   token: PropTypes.string.isRequired
 };
 
-export default LikedSongs;
+export default SongList;

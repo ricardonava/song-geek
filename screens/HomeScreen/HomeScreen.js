@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Surface } from 'react-native-paper';
 import styled from 'styled-components/native';
-import LikedSongs from './LikedSongs';
+import LikedSongs from './SongList';
 import Login from './Login';
 
 const Container = styled(Surface)`
