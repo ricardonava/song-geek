@@ -12,14 +12,15 @@ const Container = styled(Surface)`
   justify-content: center;
 `;
 
-async function getLocalToken(setToken) {
-  const token = await SecureStore.getItemAsync('localToken');
-  setToken(token);
-}
+// async function getLocalToken(setToken) {
+//   SecureStore.deleteItemAsync('localToken');
+//   const token = await SecureStore.getItemAsync('localToken');
+//   setToken(token);
+// }
 
 const HomeScreen = ({ navigation }) => {
   const [token, setToken] = useState(undefined);
-  getLocalToken(setToken);
+  // getLocalToken(setToken);
   return (
     <Container>
       {!token ? (

@@ -20,19 +20,13 @@ function setTitle(options, scene) {
 }
 
 const Header = ({ scene, previous, navigation }) => {
-  const { goBack, navigate } = navigation;
+  const { goBack } = navigation;
   const { options } = scene.descriptor;
-  const { name } = scene.route;
   const title = setTitle(options, scene);
 
   return (
     <AppbarHeader>
-      {name !== 'Home' &&
-        (previous ? (
-          <Appbar.BackAction onPress={goBack} />
-        ) : (
-          <Appbar.Action icon="home" onPress={() => navigate('Home')} />
-        ))}
+      {previous && <Appbar.BackAction onPress={goBack} />}
       <Appbar.Content title={title} />
     </AppbarHeader>
   );

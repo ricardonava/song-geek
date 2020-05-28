@@ -14,7 +14,7 @@ const Column = styled.View`
 `;
 
 const TrackName = ({
-  images,
+  cover,
   duration,
   releaseDate,
   popularity,
@@ -25,7 +25,7 @@ const TrackName = ({
     <Container>
       <Column>
         <Subheading>RELEASE </Subheading>
-        <AlbumCover images={images} />
+        <AlbumCover cover={cover} />
       </Column>
       <Column>
         <Subheading>LENGTH </Subheading>
@@ -46,7 +46,7 @@ const TrackName = ({
 };
 
 TrackName.propTypes = {
-  images: PropTypes.arrayOf(Object).isRequired,
+  cover: PropTypes.arrayOf(Object).isRequired,
   duration: PropTypes.string.isRequired,
   releaseDate: PropTypes.string.isRequired,
   popularity: PropTypes.number.isRequired,

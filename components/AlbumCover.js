@@ -8,18 +8,18 @@ const Logo = styled(Image)`
   height: 150px;
 `;
 
-const AlbumCover = ({ images }) => {
+const AlbumCover = ({ cover }) => {
   return (
     <Logo
       source={{
-        uri: images[1].url
+        uri: cover[1].url
       }}
     />
   );
 };
 
 AlbumCover.propTypes = {
-  images: PropTypes.arrayOf(Object).isRequired
+  cover: PropTypes.arrayOf(Object).isRequired
 };
 
 export default AlbumCover;

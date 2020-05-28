@@ -4,10 +4,6 @@ import { StyleSheet } from 'react-native';
 import { Headline, Subheading } from 'react-native-paper';
 import styled from 'styled-components/native';
 
-const styles = StyleSheet.create({
-  trackName: { flexDirection: 'row', flexWrap: 'wrap' }
-});
-
 const Container = styled.View`
   padding: 10px;
 `;
@@ -21,7 +17,7 @@ const TrackName = ({ name }) => {
   return (
     <Container>
       <Subheading>TRACK </Subheading>
-      <Name style={styles.trackName}>
+      <Name>
         <Headline>{name} </Headline>
       </Name>
     </Container>

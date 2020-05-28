@@ -25,7 +25,7 @@ const SongScreen = ({ route }) => {
       <TrackInfo
         albumName={albumName}
         releaseDate={releaseDate}
-        images={images}
+        cover={cover}
         id={id}
         popularity={popularity}
         duration={timeFormat}

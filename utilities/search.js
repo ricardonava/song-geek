@@ -6,9 +6,7 @@ export default async ({ token }) => {
       Authorization: `Bearer ${token}`
     }
   });
-  // console.log(res);
   const json = await res.json();
-  // console.log(json.items[0].track.album);
   const songs = json.items.map((item) => ({
     id: item.track.id,
     name: item.track.name,
