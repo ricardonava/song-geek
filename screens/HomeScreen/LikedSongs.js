@@ -19,23 +19,25 @@ async function fetchSongs(setSongs, token) {
   setSongs(songs);
 }
 
-const Item = ({ name, artist, cover, id }) => {
+const Item = ({ name, artists, cover, id, navigation }) => {
   return (
     <>
       <List.Item
         title={name}
-        description={artist}
-        left={() => <AlbumCover source={{ uri: cover }} />}
+        description={artists[0].name}
+        left={() => <AlbumCover source={{ uri: cover[0].url }} />}
         // eslint-disable-next-line react/jsx-props-no-spreading
         right={(props) => <List.Icon {...props} icon="dots-vertical" />}
-        onPress={() => console.log(id)}
+        onPress={() =>
+          navigation.navigate('Song', { name, artists, cover, id })
+        }
       />
       <Divider />
     </>
   );
 };
 
-const LikedSongs = ({ token }) => {
+const LikedSongs = ({ token, navigation }) => {
   const [songs, setSongs] = useState(undefined);
 
   useEffect(() => {
@@ -53,9 +55,10 @@ const LikedSongs = ({ token }) => {
             renderItem={({ item }) => (
               <Item
                 name={item.name}
-                artist={item.artist}
+                artists={item.artists}
                 cover={item.cover}
                 id={item.id}
+                navigation={navigation}
               />
             )}
             keyExtractor={(item) => item.id}
@@ -68,8 +71,8 @@ const LikedSongs = ({ token }) => {
 
 Item.propTypes = {
   name: PropTypes.string.isRequired,
-  artist: PropTypes.string.isRequired,
-  cover: PropTypes.string.isRequired,
+  artists: PropTypes.arrayOf(PropTypes.object).isRequired,
+  cover: PropTypes.arrayOf(PropTypes.object).isRequired,
   id: PropTypes.string.isRequired
 };
 

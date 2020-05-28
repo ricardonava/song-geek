@@ -12,9 +12,11 @@ const Container = styled(Surface)`
   padding: 5px;
 `;
 
-const SongScreen = () => {
+const SongScreen = ({ route }) => {
   const { name: albumName, release_date: releaseDate, images } = song.album;
-  const { artists, duration_ms: duration, id, name, popularity } = song;
+  const { duration_ms: duration, popularity } = song;
+  const { name, artists, cover, id } = route.params;
+
   const timeFormat = msToTime(duration);
   return (
     <Container>

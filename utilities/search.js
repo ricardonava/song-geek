@@ -12,8 +12,8 @@ export default async ({ token }) => {
   const songs = json.items.map((item) => ({
     id: item.track.id,
     name: item.track.name,
-    artist: item.track.artists[0].name,
-    cover: item.track.album.images[2].url
+    artists: item.track.artists,
+    cover: item.track.album.images
   }));
   return songs;
 };

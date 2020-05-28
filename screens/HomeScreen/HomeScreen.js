@@ -17,12 +17,16 @@ async function getLocalToken(setToken) {
   setToken(token);
 }
 
-const HomeScreen = () => {
+const HomeScreen = ({ navigation }) => {
   const [token, setToken] = useState(undefined);
   getLocalToken(setToken);
   return (
     <Container>
-      {!token ? <Login setToken={setToken} /> : <LikedSongs token={token} />}
+      {!token ? (
+        <Login setToken={setToken} />
+      ) : (
+        <LikedSongs token={token} navigation={navigation} />
+      )}
     </Container>
   );
 };
