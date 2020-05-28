@@ -1,6 +1,5 @@
 import { encode as btoa } from 'base-64';
-import * as SecureStore from 'expo-secure-store';
-import { getAuthorizationCode, CLIENT_ID, CLIENT_SECRET } from './getAuthCode';
+import { CLIENT_ID, CLIENT_SECRET, getAuthorizationCode } from './getAuthCode';
 
 const getTokens = async () => {
   const authorizationCode = await getAuthorizationCode();
@@ -16,13 +15,7 @@ const getTokens = async () => {
   });
   const responseJson = await response.json();
 
-  const {
-    access_token: accessToken
-    // refresh_token: refreshToken,
-    // expires_in: expiresIn
-  } = responseJson;
-  SecureStore.setItemAsync('localToken', accessToken);
-  return accessToken;
+  return responseJson;
 };
 
 export default getTokens;

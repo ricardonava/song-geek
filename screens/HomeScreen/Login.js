@@ -1,18 +1,23 @@
+import * as SecureStore from 'expo-secure-store';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Button } from 'react-native-paper';
 import styled from 'styled-components/native';
-import * as SecureStore from 'expo-secure-store';
 import getToken from '../../utilities/getTokens';
 
 const LoginButton = styled(Button)`
   align-self: center;
 `;
 
-async function authWithSpotify(setToken) {
-  const token = await getToken();
-  await SecureStore.setItemAsync('token', token);
-  setToken(token);
+async function authWithSpotify() {
+  const responseJson = await getToken();
+  const {
+    access_token: accessToken,
+    refresh_token: refreshToken,
+    expires_in: expiresIn
+  } = responseJson;
+  const authState = { accessToken, refreshToken, expiresIn };
+  await SecureStore.setItemAsync('token', JSON.stringify(authState));
 }
 
 const Login = ({ setToken }) => {
