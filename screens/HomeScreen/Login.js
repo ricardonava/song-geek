@@ -17,6 +17,7 @@ async function authWithSpotify() {
     expires_in: expiresIn
   } = responseJson;
   const authState = { accessToken, refreshToken, expiresIn };
+  console.log(typeof authState.accessToken);
   await SecureStore.setItemAsync('token', JSON.stringify(authState));
 }
 
