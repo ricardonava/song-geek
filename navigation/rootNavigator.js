@@ -8,13 +8,13 @@ import { useTheme } from 'react-native-paper';
 import LinkingConfiguration from './LinkingConfiguration';
 import StackNav from './stackNav';
 
-export const RootNavigator = () => {
+export const RootNavigator = ({ state }) => {
   const theme = useTheme();
   const navigationTheme = theme.dark ? DarkTheme : DefaultTheme;
 
   return (
     <NavigationContainer theme={navigationTheme} linking={LinkingConfiguration}>
-      <StackNav />
+      <StackNav state={state} />
     </NavigationContainer>
   );
 };

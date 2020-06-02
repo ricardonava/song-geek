@@ -1,26 +1,17 @@
-import React, { useState } from 'react';
-import { Surface } from 'react-native-paper';
-import styled from 'styled-components/native';
-import LikedSongs from './SongList';
-import Login from './Login';
+import React from 'react';
+import { Button, View } from 'react-native';
+import AuthContext from '../../utils/authContext';
+import SongList from './SongList';
 
-const Container = styled(Surface)`
-  flex: 1;
-  align-items: center;
-  justify-content: center;
-`;
+function HomeScreen() {
+  const { signOut } = React.useContext(AuthContext);
 
-const HomeScreen = ({ navigation }) => {
-  const [token, setToken] = useState(undefined);
   return (
-    <Container>
-      {!token ? (
-        <Login setToken={setToken} />
-      ) : (
-        <LikedSongs token={token} navigation={navigation} />
-      )}
-    </Container>
+    <View>
+      <Button title="Sign out" onPress={signOut} />
+      <SongList />
+    </View>
   );
-};
+}
 
 export default HomeScreen;

@@ -4,11 +4,30 @@ import { PropTypes } from 'prop-types';
 import React from 'react';
 import Header from '../components/Header';
 import HomeScreen from '../screens/HomeScreen/HomeScreen';
-import SongScreen from '../screens/SongScreen/SongScreen';
+import SignInScreen from '../screens/SignInScreen/SignInScreen';
+import SplashScreen from '../screens/SplashScreen/SplashScreen';
 
 const Stack = createStackNavigator();
 
-const StackNav = () => {
+const StackNav = ({ state }) => {
+  let screen;
+  if (state.isLoading) {
+    screen = <Stack.Screen name="Splash" component={SplashScreen} />;
+  } else {
+    screen =
+      state.userToken == null ? (
+        <Stack.Screen
+          name="SignIn"
+          component={SignInScreen}
+          options={{
+            title: 'Sign in',
+            animationTypeForReplace: state.isSignout ? 'pop' : 'push'
+          }}
+        />
+      ) : (
+        <Stack.Screen name="Home" component={HomeScreen} />
+      );
+  }
   return (
     <Stack.Navigator
       initialRouteName="Home"
@@ -19,16 +38,7 @@ const StackNav = () => {
         )
       }}
     >
-      <Stack.Screen
-        name="Home"
-        component={HomeScreen}
-        options={{ headerTitle: 'Song Geek' }}
-      />
-      <Stack.Screen
-        name="Song"
-        component={SongScreen}
-        options={{ headerTitle: 'Song' }}
-      />
+      {screen}
     </Stack.Navigator>
   );
 };

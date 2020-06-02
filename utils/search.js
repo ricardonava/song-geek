@@ -3,7 +3,7 @@ export default async ({ token }) => {
   const res = await fetch(uri, {
     method: 'GET',
     headers: {
-      Authorization: `Bearer ${token}`
+      Authorization: `Bearer ${JSON.parse(token)}`
     }
   });
   const json = await res.json();
