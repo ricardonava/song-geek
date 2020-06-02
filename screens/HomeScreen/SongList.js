@@ -23,7 +23,7 @@ async function fetchSongs(setSongs) {
   setSongs(songs);
 }
 
-const Item = ({ name, artists, cover }) => {
+const Item = ({ name, artists, cover, navigation, id }) => {
   return (
     <>
       <List.Item
@@ -32,14 +32,16 @@ const Item = ({ name, artists, cover }) => {
         left={() => <AlbumCover source={{ uri: cover[0].url }} />}
         // eslint-disable-next-line react/jsx-props-no-spreading
         right={(props) => <List.Icon {...props} icon="dots-vertical" />}
-        onPress={() => console.log('pressed')}
+        onPress={() =>
+          navigation.navigate('Song', { name, artists, cover, id })
+        }
       />
       <Divider />
     </>
   );
 };
 
-const SongList = () => {
+const SongList = ({ navigation }) => {
   const [songs, setSongs] = useState(undefined);
 
   useEffect(() => {
@@ -59,6 +61,7 @@ const SongList = () => {
               artists={item.artists}
               cover={item.cover}
               id={item.id}
+              navigation={navigation}
             />
           )}
           keyExtractor={(item) => item.id}

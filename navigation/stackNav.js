@@ -6,6 +6,7 @@ import Header from '../components/Header';
 import HomeScreen from '../screens/HomeScreen/HomeScreen';
 import SignInScreen from '../screens/SignInScreen/SignInScreen';
 import SplashScreen from '../screens/SplashScreen/SplashScreen';
+import SongScreen from '../screens/SongScreen/SongScreen';
 
 const Stack = createStackNavigator();
 
@@ -33,13 +34,22 @@ const StackNav = ({ state }) => {
           }}
         />
       ) : (
-        <Stack.Screen
-          name="Home"
-          component={HomeScreen}
-          options={{
-            title: 'Song Geek'
-          }}
-        />
+        <>
+          <Stack.Screen
+            name="Home"
+            component={HomeScreen}
+            options={{
+              title: 'Song Geek'
+            }}
+          />
+          <Stack.Screen
+            name="Song"
+            component={SongScreen}
+            options={{
+              title: 'Song'
+            }}
+          />
+        </>
       );
   }
   return (

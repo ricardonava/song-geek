@@ -2,10 +2,10 @@ import React from 'react';
 import { View } from 'react-native';
 import SongList from './SongList';
 
-function HomeScreen() {
+function HomeScreen({ navigation }) {
   return (
     <View>
-      <SongList />
+      <SongList navigation={navigation} />
     </View>
   );
 }
