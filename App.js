@@ -4,7 +4,6 @@ import * as WebBrowser from 'expo-web-browser';
 import * as React from 'react';
 import { Platform, StatusBar } from 'react-native';
 import { DarkTheme, Provider as PaperProvider } from 'react-native-paper';
-import styled from 'styled-components/native';
 // import useCachedResources from './hooks/useCachedResources';
 import { RootNavigator } from './navigation/rootNavigator';
 import AuthContext from './utils/authContext';
@@ -13,10 +12,6 @@ import getToken from './utils/getToken';
 const redirect = AuthSession.makeRedirectUri({ useProxy: true });
 
 WebBrowser.maybeCompleteAuthSession();
-
-const Container = styled.View`
-  flex: 1;
-`;
 
 const theme = {
   ...DarkTheme,
@@ -96,10 +91,8 @@ export default function App() {
   return (
     <AuthContext.Provider value={authContext}>
       <PaperProvider theme={theme}>
-        <Container>
-          {Platform.OS === 'ios' && <StatusBar barStyle="dark-content" />}
-          <RootNavigator state={state} />
-        </Container>
+        {Platform.OS === 'ios' && <StatusBar barStyle="dark-content" />}
+        <RootNavigator state={state} />
       </PaperProvider>
     </AuthContext.Provider>
   );

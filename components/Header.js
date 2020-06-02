@@ -2,6 +2,7 @@ import { PropTypes } from 'prop-types';
 import React from 'react';
 import { Appbar } from 'react-native-paper';
 import styled from 'styled-components/native';
+import AuthContext from '../utils/authContext';
 
 const AppbarHeader = styled(Appbar.Header)`
   elevation: 20;
@@ -23,11 +24,14 @@ const Header = ({ scene, previous, navigation }) => {
   const { goBack } = navigation;
   const { options } = scene.descriptor;
   const title = setTitle(options, scene);
-
+  const { signOut } = React.useContext(AuthContext);
   return (
     <AppbarHeader>
       {previous && <Appbar.BackAction onPress={goBack} />}
       <Appbar.Content title={title} />
+      {title === 'Song Geek' && (
+        <Appbar.Action icon="logout" onPress={signOut} />
+      )}
     </AppbarHeader>
   );
 };

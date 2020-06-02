@@ -12,7 +12,15 @@ const Stack = createStackNavigator();
 const StackNav = ({ state }) => {
   let screen;
   if (state.isLoading) {
-    screen = <Stack.Screen name="Splash" component={SplashScreen} />;
+    screen = (
+      <Stack.Screen
+        name="Splash"
+        component={SplashScreen}
+        options={{
+          title: 'Song Geek'
+        }}
+      />
+    );
   } else {
     screen =
       state.userToken == null ? (
@@ -25,7 +33,13 @@ const StackNav = ({ state }) => {
           }}
         />
       ) : (
-        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{
+            title: 'Song Geek'
+          }}
+        />
       );
   }
   return (
@@ -52,7 +66,8 @@ StackNav.defaultProps = {
 StackNav.propTypes = {
   scene: PropTypes.objectOf(Object),
   navigation: PropTypes.objectOf(PropTypes.func),
-  previous: PropTypes.objectOf(Object)
+  previous: PropTypes.objectOf(Object),
+  state: PropTypes.objectOf(PropTypes.any).isRequired
 };
 
 export default StackNav;

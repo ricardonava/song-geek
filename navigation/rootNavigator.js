@@ -3,6 +3,7 @@ import {
   DefaultTheme,
   NavigationContainer
 } from '@react-navigation/native';
+import { PropTypes } from 'prop-types';
 import React from 'react';
 import { useTheme } from 'react-native-paper';
 import LinkingConfiguration from './LinkingConfiguration';
@@ -17,6 +18,10 @@ export const RootNavigator = ({ state }) => {
       <StackNav state={state} />
     </NavigationContainer>
   );
+};
+
+RootNavigator.propTypes = {
+  state: PropTypes.objectOf(PropTypes.any).isRequired
 };
 
 export default RootNavigator;
