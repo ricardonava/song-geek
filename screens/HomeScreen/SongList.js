@@ -8,6 +8,8 @@ import search from '../../utils/search';
 
 const Container = styled(Surface)`
   width: 100%;
+  height: 100%;
+  justify-content: center;
 `;
 
 const AlbumCover = styled(Image)`
@@ -45,26 +47,24 @@ const SongList = () => {
   }, []);
 
   return (
-    <>
+    <Container>
       {!songs ? (
         <ActivityIndicator />
       ) : (
-        <Container>
-          <FlatList
-            data={songs}
-            renderItem={({ item }) => (
-              <Item
-                name={item.name}
-                artists={item.artists}
-                cover={item.cover}
-                id={item.id}
-              />
-            )}
-            keyExtractor={(item) => item.id}
-          />
-        </Container>
+        <FlatList
+          data={songs}
+          renderItem={({ item }) => (
+            <Item
+              name={item.name}
+              artists={item.artists}
+              cover={item.cover}
+              id={item.id}
+            />
+          )}
+          keyExtractor={(item) => item.id}
+        />
       )}
-    </>
+    </Container>
   );
 };
 
