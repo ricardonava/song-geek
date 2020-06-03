@@ -5,8 +5,8 @@ import React from 'react';
 import Header from '../components/Header';
 import HomeScreen from '../screens/HomeScreen/HomeScreen';
 import SignInScreen from '../screens/SignInScreen/SignInScreen';
-import SplashScreen from '../screens/SplashScreen/SplashScreen';
 import SongScreen from '../screens/SongScreen/SongScreen';
+import SplashScreen from '../screens/SplashScreen/SplashScreen';
 
 const Stack = createStackNavigator();
 
