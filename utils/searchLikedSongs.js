@@ -15,6 +15,5 @@ export default async ({ token }) => {
     cover: item.track.album.images,
     releaseDate: item.track.album.release_date
   }));
-  // console.log(songs);
   return songs;
 };
