@@ -45,10 +45,14 @@ const TrackInfo = ({ cover, releaseDate, songInfo }) => {
   );
 };
 
+TrackInfo.defaultProps = {
+  songInfo: undefined
+};
+
 TrackInfo.propTypes = {
   cover: PropTypes.arrayOf(Object).isRequired,
   releaseDate: PropTypes.string.isRequired,
-  songInfo: PropTypes.objectOf(PropTypes.any).isRequired
+  songInfo: PropTypes.objectOf(PropTypes.any)
 };
 
 export default TrackInfo;
