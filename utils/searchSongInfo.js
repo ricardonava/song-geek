@@ -1,3 +1,5 @@
+import pitchToKey from './pitchToKey';
+
 export default async ({ token, id }) => {
   const uri = `https://api.spotify.com/v1/audio-features/${id}`;
   const res = await fetch(uri, {
@@ -6,7 +8,8 @@ export default async ({ token, id }) => {
       Authorization: `Bearer ${JSON.parse(token)}`
     }
   });
-  const json = await res.json();
-  const songInfo = json;
+  const data = await res.json();
+  const key = pitchToKey(data);
+  const songInfo = { ...data, key };
   return songInfo;
 };

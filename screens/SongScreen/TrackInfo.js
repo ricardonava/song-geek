@@ -35,7 +35,7 @@ const TrackInfo = ({ cover, releaseDate, songInfo }) => {
             <Subheading>KEY </Subheading>
             <Text>{songInfo.key} </Text>
             <Subheading>LOUDNESS </Subheading>
-            <Text>{songInfo.loudness} </Text>
+            <Text>{songInfo.loudness} LUFS </Text>
             <Subheading>DANCEABILITY </Subheading>
             <Text>{songInfo.danceability} </Text>
           </>
