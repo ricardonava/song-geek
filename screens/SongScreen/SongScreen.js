@@ -1,13 +1,12 @@
 import * as SecureStore from 'expo-secure-store';
-
+import { PropTypes } from 'prop-types';
 import React, { useEffect, useState } from 'react';
-import { Surface, Subheading } from 'react-native-paper';
+import { Subheading, Surface } from 'react-native-paper';
 import styled from 'styled-components/native';
-import song from '../../song.json';
+import search from '../../utils/searchSongInfo';
 import Artists from './Artists';
 import TrackInfo from './TrackInfo';
 import TrackName from './TrackName';
-import search from '../../utils/searchSongInfo';
 
 const Container = styled(Surface)`
   flex: 1;
@@ -29,7 +28,6 @@ async function fetchSongInfo(setSongInfo, id) {
 
 const SongScreen = ({ route }) => {
   const [songInfo, setSongInfo] = useState(undefined);
-  const { duration_ms: duration, popularity } = song;
   const { name, artists, cover, id, releaseDate } = route.params;
 
   useEffect(() => {
@@ -50,12 +48,15 @@ const SongScreen = ({ route }) => {
           releaseDate={releaseDate}
           cover={cover}
           id={id}
-          popularity={popularity}
           songInfo={songInfo}
         />
       </Section>
     </Container>
   );
+};
+
+SongScreen.propTypes = {
+  route: PropTypes.objectOf(PropTypes.any).isRequired
 };
 
 export default SongScreen;

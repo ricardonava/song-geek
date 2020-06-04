@@ -1,6 +1,6 @@
 import { PropTypes } from 'prop-types';
 import React from 'react';
-import { Subheading, Text, ActivityIndicator } from 'react-native-paper';
+import { ActivityIndicator, Subheading, Text } from 'react-native-paper';
 import styled from 'styled-components/native';
 import AlbumCover from '../../components/AlbumCover';
 import msToTime from '../../utils/msToTime';
