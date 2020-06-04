@@ -1,11 +1,13 @@
-import React from 'react';
+import * as SecureStore from 'expo-secure-store';
+
+import React, { useEffect, useState } from 'react';
 import { Surface, Subheading } from 'react-native-paper';
 import styled from 'styled-components/native';
 import song from '../../song.json';
-import msToTime from '../../utils/msToTime';
 import Artists from './Artists';
 import TrackInfo from './TrackInfo';
 import TrackName from './TrackName';
+import search from '../../utils/searchSongInfo';
 
 const Container = styled(Surface)`
   flex: 1;
@@ -19,12 +21,21 @@ const Section = styled(Surface)`
   border-radius: 5px;
 `;
 
-const SongScreen = ({ route }) => {
-  const { name: albumName, release_date: releaseDate, images } = song.album;
-  const { duration_ms: duration, popularity } = song;
-  const { name, artists, cover, id } = route.params;
+async function fetchSongInfo(setSongInfo, id) {
+  const token = JSON.stringify(await SecureStore.getItemAsync('userToken'));
+  const songInfo = await search({ token, id });
+  setSongInfo(songInfo);
+}
 
-  const timeFormat = msToTime(duration);
+const SongScreen = ({ route }) => {
+  const [songInfo, setSongInfo] = useState(undefined);
+  const { duration_ms: duration, popularity } = song;
+  const { name, artists, cover, id, releaseDate } = route.params;
+
+  useEffect(() => {
+    fetchSongInfo(setSongInfo, id);
+  }, []);
+
   return (
     <Container>
       <Subheading>Song Information</Subheading>
@@ -36,12 +47,11 @@ const SongScreen = ({ route }) => {
       </Section>
       <Section>
         <TrackInfo
-          albumName={albumName}
           releaseDate={releaseDate}
           cover={cover}
           id={id}
           popularity={popularity}
-          duration={timeFormat}
+          songInfo={songInfo}
         />
       </Section>
     </Container>

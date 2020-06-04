@@ -1,8 +1,9 @@
 import { PropTypes } from 'prop-types';
 import React from 'react';
-import { Subheading, Text } from 'react-native-paper';
+import { Subheading, Text, ActivityIndicator } from 'react-native-paper';
 import styled from 'styled-components/native';
 import AlbumCover from '../../components/AlbumCover';
+import msToTime from '../../utils/msToTime';
 
 const Container = styled.View`
   flex-direction: row;
@@ -13,14 +14,7 @@ const Column = styled.View`
   width: 50%;
 `;
 
-const TrackInfo = ({
-  cover,
-  duration,
-  releaseDate,
-  popularity,
-  id,
-  albumName
-}) => {
+const TrackInfo = ({ cover, releaseDate, songInfo }) => {
   return (
     <Container>
       <Column>
@@ -28,18 +22,24 @@ const TrackInfo = ({
         <AlbumCover cover={cover} />
       </Column>
       <Column>
-        <Subheading>LENGTH </Subheading>
-        <Text>{duration} </Text>
-        <Subheading>RELEASED </Subheading>
-        <Text>{releaseDate} </Text>
-        <Subheading>BPM </Subheading>
-        <Text>{popularity} </Text>
-        <Subheading>KEY </Subheading>
-        <Text>{id[0]} </Text>
-        <Subheading>GENRE </Subheading>
-        <Text>{id} </Text>
-        <Subheading>LABEL </Subheading>
-        <Text>{albumName} </Text>
+        {!songInfo ? (
+          <ActivityIndicator />
+        ) : (
+          <>
+            <Subheading>LENGTH </Subheading>
+            <Text>{msToTime(songInfo.duration_ms)} </Text>
+            <Subheading>RELEASED </Subheading>
+            <Text>{releaseDate} </Text>
+            <Subheading>BPM </Subheading>
+            <Text>{songInfo.tempo} </Text>
+            <Subheading>KEY </Subheading>
+            <Text>{songInfo.key} </Text>
+            <Subheading>LOUDNESS </Subheading>
+            <Text>{songInfo.loudness} </Text>
+            <Subheading>DANCEABILITY </Subheading>
+            <Text>{songInfo.danceability} </Text>
+          </>
+        )}
       </Column>
     </Container>
   );
@@ -47,11 +47,7 @@ const TrackInfo = ({
 
 TrackInfo.propTypes = {
   cover: PropTypes.arrayOf(Object).isRequired,
-  duration: PropTypes.string.isRequired,
-  releaseDate: PropTypes.string.isRequired,
-  popularity: PropTypes.number.isRequired,
-  id: PropTypes.string.isRequired,
-  albumName: PropTypes.string.isRequired
+  releaseDate: PropTypes.string.isRequired
 };
 
 export default TrackInfo;

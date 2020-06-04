@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { FlatList, Image } from 'react-native';
 import { ActivityIndicator, Divider, List, Surface } from 'react-native-paper';
 import styled from 'styled-components/native';
-import search from '../../utils/search';
+import search from '../../utils/searchLikedSongs';
 
 const Container = styled(Surface)`
   width: 100%;
@@ -23,7 +23,7 @@ async function fetchSongs(setSongs) {
   setSongs(songs);
 }
 
-const Item = ({ name, artists, cover, navigation, id }) => {
+const Item = ({ name, artists, cover, navigation, id, releaseDate }) => {
   return (
     <>
       <List.Item
@@ -33,7 +33,7 @@ const Item = ({ name, artists, cover, navigation, id }) => {
         // eslint-disable-next-line react/jsx-props-no-spreading
         right={(props) => <List.Icon {...props} icon="dots-vertical" />}
         onPress={() =>
-          navigation.navigate('Song', { name, artists, cover, id })
+          navigation.navigate('Song', { name, artists, cover, id, releaseDate })
         }
       />
       <Divider />
@@ -62,6 +62,7 @@ const SongList = ({ navigation }) => {
               cover={item.cover}
               id={item.id}
               navigation={navigation}
+              releaseDate={item.releaseDate}
             />
           )}
           keyExtractor={(item) => item.id}
