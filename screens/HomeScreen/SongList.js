@@ -31,7 +31,6 @@ const Item = ({ name, artists, cover, navigation, id, releaseDate }) => {
         description={artists[0].name}
         left={() => <AlbumCover source={{ uri: cover[0].url }} />}
         // eslint-disable-next-line react/jsx-props-no-spreading
-        right={(props) => <List.Icon {...props} icon="dots-vertical" />}
         onPress={() =>
           navigation.navigate('Song', { name, artists, cover, id, releaseDate })
         }
@@ -77,6 +76,10 @@ Item.propTypes = {
   artists: PropTypes.arrayOf(PropTypes.object).isRequired,
   cover: PropTypes.arrayOf(PropTypes.object).isRequired,
   id: PropTypes.string.isRequired
+};
+
+SongList.propTypes = {
+  navigation: PropTypes.objectOf(PropTypes.func).isRequired
 };
 
 export default SongList;
