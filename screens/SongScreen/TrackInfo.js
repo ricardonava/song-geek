@@ -47,7 +47,8 @@ const TrackInfo = ({ cover, releaseDate, songInfo }) => {
 
 TrackInfo.propTypes = {
   cover: PropTypes.arrayOf(Object).isRequired,
-  releaseDate: PropTypes.string.isRequired
+  releaseDate: PropTypes.string.isRequired,
+  songInfo: PropTypes.objectOf(PropTypes.any).isRequired
 };
 
 export default TrackInfo;
