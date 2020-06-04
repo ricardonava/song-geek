@@ -1,9 +1,11 @@
+/* eslint-disable default-case */
 import * as AuthSession from 'expo-auth-session';
 import * as SecureStore from 'expo-secure-store';
 import * as WebBrowser from 'expo-web-browser';
 import * as React from 'react';
 import { Platform, StatusBar } from 'react-native';
 import { DarkTheme, Provider as PaperProvider } from 'react-native-paper';
+import authStateReducer from './authStateReducer';
 // import useCachedResources from './hooks/useCachedResources';
 import { RootNavigator } from './navigation/rootNavigator';
 import AuthContext from './utils/authContext';
@@ -25,35 +27,7 @@ export default function App() {
   //   return null;
   // }
 
-  const [state, dispatch] = React.useReducer(
-    (prevState, action) => {
-      switch (action.type) {
-        case 'RESTORE_TOKEN':
-          return {
-            ...prevState,
-            userToken: action.token,
-            isLoading: false
-          };
-        case 'SIGN_IN':
-          return {
-            ...prevState,
-            isSignout: false,
-            userToken: action.token
-          };
-        case 'SIGN_OUT':
-          return {
-            ...prevState,
-            isSignout: true,
-            userToken: null
-          };
-      }
-    },
-    {
-      isLoading: true,
-      isSignout: false,
-      userToken: null
-    }
-  );
+  const [state, dispatch] = authStateReducer();
 
   React.useEffect(() => {
     const bootstrapAsync = async () => {
@@ -64,7 +38,7 @@ export default function App() {
       } catch (e) {
         console.log(`No LOCAL TOKEN found: ${userToken}`);
       }
-      dispatch({ type: 'RESTORE_TOKEN', token: userToken });
+      dispatch({ type: 'RESTORE_TOKEN', payload: { token: userToken } });
     };
 
     bootstrapAsync();
@@ -78,7 +52,7 @@ export default function App() {
           redirect
         );
         await SecureStore.setItemAsync('userToken', accesToken);
-        dispatch({ type: 'SIGN_IN', token: 'token' });
+        dispatch({ type: 'SIGN_IN', payload: { token: 'token' } });
       },
       signOut: async () => {
         await SecureStore.deleteItemAsync('userToken');
