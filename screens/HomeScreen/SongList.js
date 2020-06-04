@@ -75,7 +75,9 @@ Item.propTypes = {
   name: PropTypes.string.isRequired,
   artists: PropTypes.arrayOf(PropTypes.object).isRequired,
   cover: PropTypes.arrayOf(PropTypes.object).isRequired,
-  id: PropTypes.string.isRequired
+  id: PropTypes.string.isRequired,
+  navigation: PropTypes.objectOf(PropTypes.func).isRequired,
+  releaseDate: PropTypes.string.isRequired
 };
 
 SongList.propTypes = {
