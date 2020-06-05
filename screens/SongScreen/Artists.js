@@ -8,13 +8,20 @@ const Container = styled.View`
   padding: 10px;
 `;
 
+const ArtistName = styled.View`
+  flex-direction: row;
+  flex-wrap: wrap;
+`;
+
 const TrackName = ({ artists }) => {
   return (
     <Container>
       <Subheading>ARTISTS </Subheading>
-      {artists.map((artist) => (
-        <Text key={artist.id}>{artist.name} </Text>
-      ))}
+      <ArtistName>
+        {artists.map((artist) => (
+          <Text key={artist.id}>{artist.name} </Text>
+        ))}
+      </ArtistName>
     </Container>
   );
 };
