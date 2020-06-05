@@ -6,6 +6,8 @@ import { ActivityIndicator, Divider, List, Surface } from 'react-native-paper';
 import styled from 'styled-components/native';
 import search from '../../utils/searchLikedSongs';
 
+const LIMIT = 10;
+
 const Container = styled(Surface)`
   width: 100%;
   height: 100%;
@@ -17,54 +19,90 @@ const AlbumCover = styled(Image)`
   height: 64px;
 `;
 
-async function fetchSongs(setSongs) {
+async function fetchSongs(setSongs, songs, offset, setOffset) {
   const token = JSON.stringify(await SecureStore.getItemAsync('userToken'));
-  const songs = await search({ token });
-  setSongs(songs);
+  const newSongs = await search({ token, LIMIT, offset });
+  setSongs([...songs, ...newSongs]);
+
+  setOffset(offset + LIMIT);
+
+  console.log(offset);
 }
 
-const Item = ({ name, artists, cover, navigation, id, releaseDate }) => {
-  return (
-    <>
-      <List.Item
-        title={name}
-        description={artists[0].name}
-        left={() => <AlbumCover source={{ uri: cover[0].url }} />}
-        // eslint-disable-next-line react/jsx-props-no-spreading
-        onPress={() =>
-          navigation.navigate('Song', { name, artists, cover, id, releaseDate })
-        }
-      />
-      <Divider />
-    </>
-  );
-};
+// async function loadNextPage() {
+//   const { songs, offset } = useState();
+// }
+
+// async function handleEndReached() {
+//   await this.loadNextPage();
+// }
+
+const Item = React.memo(
+  ({ name, artists, cover, navigate, id, releaseDate }) => {
+    return (
+      <>
+        <List.Item
+          title={name}
+          description={artists[0].name}
+          left={() => <AlbumCover source={{ uri: cover[0].url }} />}
+          // eslint-disable-next-line react/jsx-props-no-spreading
+          onPress={() =>
+            navigate('Song', {
+              name,
+              artists,
+              cover,
+              id,
+              releaseDate
+            })
+          }
+        />
+      </>
+    );
+  }
+);
 
 const SongList = ({ navigation }) => {
-  const [songs, setSongs] = useState(undefined);
+  const { navigate } = navigation;
+  const [songs, setSongs] = useState([]);
+  const [offset, setOffset] = useState(0);
+  // const [isFetching, setIsFetching] = useState(false);
 
   useEffect(() => {
-    fetchSongs(setSongs);
+    if (songs.length === 0) {
+      fetchSongs(setSongs, songs, offset, setOffset);
+    }
   }, []);
+
+  const renderItem = ({ item }) => (
+    <Item
+      name={item.name}
+      artists={item.artists}
+      cover={item.cover}
+      id={item.id}
+      navigate={navigate}
+      releaseDate={item.releaseDate}
+    />
+  );
 
   return (
     <Container>
-      {!songs ? (
-        <ActivityIndicator />
+      {songs.length === 0 ? (
+        <ActivityIndicator size="large" />
       ) : (
         <FlatList
           data={songs}
-          renderItem={({ item }) => (
-            <Item
-              name={item.name}
-              artists={item.artists}
-              cover={item.cover}
-              id={item.id}
-              navigation={navigation}
-              releaseDate={item.releaseDate}
-            />
-          )}
+          renderItem={renderItem}
           keyExtractor={(item) => item.id}
+          onEndReached={() => fetchSongs(setSongs, songs, offset, setOffset)}
+          ItemSeparatorComponent={Divider}
+          onEndReachedThreshold={0.1}
+          maxToRenderPerBatch={5}
+          updateCellsBatchingPeriod={20}
+          getItemLayout={(data, index) => ({
+            length: 80,
+            offset: 81 * index,
+            index
+          })}
         />
       )}
     </Container>
@@ -76,7 +114,7 @@ Item.propTypes = {
   artists: PropTypes.arrayOf(PropTypes.object).isRequired,
   cover: PropTypes.arrayOf(PropTypes.object).isRequired,
   id: PropTypes.string.isRequired,
-  navigation: PropTypes.objectOf(PropTypes.func).isRequired,
+  navigate: PropTypes.func.isRequired,
   releaseDate: PropTypes.string.isRequired
 };
 

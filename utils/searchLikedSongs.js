@@ -1,5 +1,5 @@
-export default async ({ token }) => {
-  const uri = 'https://api.spotify.com/v1/me/tracks?offset=0&limit=50';
+export default async ({ token, LIMIT, offset }) => {
+  const uri = `https://api.spotify.com/v1/me/tracks?offset=${offset}&limit=${LIMIT}`;
   const res = await fetch(uri, {
     method: 'GET',
     headers: {
