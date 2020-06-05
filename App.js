@@ -5,8 +5,7 @@ import * as WebBrowser from 'expo-web-browser';
 import * as React from 'react';
 import { Platform, StatusBar } from 'react-native';
 import { DarkTheme, Provider as PaperProvider } from 'react-native-paper';
-import authStateReducer from './authStateReducer';
-// import useCachedResources from './hooks/useCachedResources';
+import useAuthStateReducer from './hooks/useAuthStateReducer';
 import { RootNavigator } from './navigation/rootNavigator';
 import AuthContext from './utils/authContext';
 import getToken from './utils/getToken';
@@ -27,18 +26,19 @@ export default function App() {
   //   return null;
   // }
 
-  const [state, dispatch] = authStateReducer();
+  const [state, dispatch] = useAuthStateReducer();
 
   React.useEffect(() => {
     const bootstrapAsync = async () => {
-      let userToken;
+      let token;
 
       try {
-        userToken = await SecureStore.getItemAsync('userToken');
+        token = await SecureStore.getItemAsync('userToken');
       } catch (e) {
-        console.log(`No LOCAL TOKEN found: ${userToken}`);
+        console.log(`No LOCAL TOKEN found: ${token}
+        Error code: ${e}`);
       }
-      dispatch({ type: 'RESTORE_TOKEN', payload: { token: userToken } });
+      dispatch({ type: 'RESTORE_TOKEN', payload: { token } });
     };
 
     bootstrapAsync();
@@ -47,13 +47,11 @@ export default function App() {
   const authContext = React.useMemo(
     () => ({
       signIn: async (promptAsync) => {
-        const { access_token: accesToken } = await getToken(
-          promptAsync,
-          redirect
-        );
-        await SecureStore.setItemAsync('userToken', accesToken);
-        dispatch({ type: 'SIGN_IN', payload: { token: 'token' } });
+        const { access_token: token } = await getToken(promptAsync, redirect);
+        await SecureStore.setItemAsync('userToken', token);
+        dispatch({ type: 'SIGN_IN', payload: { token } });
       },
+
       signOut: async () => {
         await SecureStore.deleteItemAsync('userToken');
         dispatch({ type: 'SIGN_OUT' });

@@ -9,7 +9,13 @@ export default async ({ token, id }) => {
     }
   });
   const data = await res.json();
-  const key = pitchToKey(data);
-  const songInfo = { ...data, key };
+  let { key, mode } = data;
+
+  mode = mode === 0 ? (mode = 'min') : (mode = 'maj');
+  const pitch = key;
+  key = pitchToKey(pitch);
+
+  const songInfo = { ...data, key, mode };
+  console.log(songInfo);
   return songInfo;
 };

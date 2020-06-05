@@ -33,11 +33,11 @@ const TrackInfo = ({ cover, releaseDate, songInfo }) => {
             <Subheading>BPM </Subheading>
             <Text>{songInfo.tempo} </Text>
             <Subheading>KEY </Subheading>
-            <Text>{songInfo.key} </Text>
+            <Text>
+              {songInfo.key} {songInfo.mode}
+            </Text>
             <Subheading>LOUDNESS </Subheading>
             <Text>{songInfo.loudness} LUFS </Text>
-            <Subheading>DANCEABILITY </Subheading>
-            <Text>{songInfo.danceability} </Text>
           </>
         )}
       </Column>

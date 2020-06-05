@@ -1,7 +1,7 @@
 /* eslint-disable default-case */
 import React from 'react';
 
-export default function authStateReducer() {
+export default function useAuthStateReducer() {
   return React.useReducer(
     // eslint-disable-next-line consistent-return
     (prevState, action) => {

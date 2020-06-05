@@ -1,6 +1,6 @@
-export default function pitchToKey(data) {
-  let { key } = data;
-  switch (key) {
+export default function pitchToKey(pitch) {
+  let key;
+  switch (pitch) {
     case 0:
       key = 'C';
       break;
