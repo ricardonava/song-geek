@@ -1,4 +1,3 @@
-import * as AuthSession from 'expo-auth-session';
 import React from 'react';
 import { Button, Surface } from 'react-native-paper';
 import styled from 'styled-components/native';
@@ -10,9 +9,9 @@ const Container = styled(Surface)`
   justify-content: center;
 `;
 
-const redirect = AuthSession.makeRedirectUri({ useProxy: true });
-
 const SignInScreen = () => {
+  const { signIn } = React.useContext(AuthContext);
+
   return (
     <Container>
       <Button mode="contained" onPress={() => signIn()}>
