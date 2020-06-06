@@ -17,9 +17,9 @@ const authUrl = `https://accounts.spotify.com/authorize?response_type=code&clien
 }&redirect_uri=${encodeURIComponent(
   'https://auth.expo.io/@ricardonava/song-geek/'
 )}`;
+
 export const getAuthorizationCode = async () => {
-  const result = await AuthSession.startAsync({
+  await AuthSession.startAsync({
     authUrl
   });
-  return result.params.code;
 };

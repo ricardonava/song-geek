@@ -1,12 +1,13 @@
 import * as SecureStore from 'expo-secure-store';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
-import { FlatList, Image } from 'react-native';
-import { ActivityIndicator, Divider, List, Surface } from 'react-native-paper';
+import { FlatList } from 'react-native';
+import { ActivityIndicator, Divider, Surface } from 'react-native-paper';
 import styled from 'styled-components/native';
 import search from '../../utils/searchLikedSongs';
+import Item from './Item';
 
-const LIMIT = 10;
+const LIMIT = 20;
 
 const Container = styled(Surface)`
   width: 100%;
@@ -14,52 +15,13 @@ const Container = styled(Surface)`
   justify-content: center;
 `;
 
-const AlbumCover = styled(Image)`
-  width: 64px;
-  height: 64px;
-`;
-
 async function fetchSongs(setSongs, songs, offset, setOffset) {
   const token = JSON.stringify(await SecureStore.getItemAsync('userToken'));
   const newSongs = await search({ token, LIMIT, offset });
+
   setSongs([...songs, ...newSongs]);
-
   setOffset(offset + LIMIT);
-
-  console.log(offset);
 }
-
-// async function loadNextPage() {
-//   const { songs, offset } = useState();
-// }
-
-// async function handleEndReached() {
-//   await this.loadNextPage();
-// }
-
-const Item = React.memo(
-  ({ name, artists, cover, navigate, id, releaseDate }) => {
-    return (
-      <>
-        <List.Item
-          title={name}
-          description={artists[0].name}
-          left={() => <AlbumCover source={{ uri: cover[0].url }} />}
-          // eslint-disable-next-line react/jsx-props-no-spreading
-          onPress={() =>
-            navigate('Song', {
-              name,
-              artists,
-              cover,
-              id,
-              releaseDate
-            })
-          }
-        />
-      </>
-    );
-  }
-);
 
 const SongList = ({ navigation }) => {
   const { navigate } = navigation;
@@ -73,16 +35,19 @@ const SongList = ({ navigation }) => {
     }
   }, []);
 
-  const renderItem = ({ item }) => (
-    <Item
-      name={item.name}
-      artists={item.artists}
-      cover={item.cover}
-      id={item.id}
-      navigate={navigate}
-      releaseDate={item.releaseDate}
-    />
-  );
+  const renderItem = ({ item }) => {
+    const { name, artists, cover, id, releaseDate } = item;
+    return (
+      <Item
+        name={name}
+        artists={artists}
+        cover={cover}
+        id={id}
+        navigate={navigate}
+        releaseDate={releaseDate}
+      />
+    );
+  };
 
   return (
     <Container>
