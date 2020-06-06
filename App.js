@@ -9,6 +9,7 @@ import useAuthStateReducer from './hooks/useAuthStateReducer';
 import { RootNavigator } from './navigation/rootNavigator';
 import AuthContext from './utils/authContext';
 import getToken from './utils/getToken';
+import authUrl from './utils/secret';
 
 const redirect = AuthSession.makeRedirectUri({ useProxy: true });
 
@@ -46,8 +47,13 @@ export default function App() {
 
   const authContext = React.useMemo(
     () => ({
-      signIn: async (promptAsync) => {
-        const { access_token: token } = await getToken(promptAsync, redirect);
+      signIn: async () => {
+        const {
+          params: { code }
+        } = await AuthSession.startAsync({
+          authUrl
+        });
+        const { access_token: token } = await getToken(code, redirect);
         await SecureStore.setItemAsync('userToken', token);
         dispatch({ type: 'SIGN_IN', payload: { token } });
       },
