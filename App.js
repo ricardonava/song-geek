@@ -19,6 +19,18 @@ const theme = {
   mode: 'adaptive'
 };
 
+async function bootstrapAsync(dispatch) {
+  let token;
+
+  try {
+    token = await SecureStore.getItemAsync('userToken');
+  } catch (e) {
+    console.log(`No LOCAL TOKEN found: ${token}
+    Error code: ${e}`);
+  }
+  dispatch({ type: 'RESTORE_TOKEN', payload: { token } });
+}
+
 export default function App() {
   // const isLoadingComplete = useCachedResources();
 
@@ -29,19 +41,7 @@ export default function App() {
   const [state, dispatch] = useAuthStateReducer();
 
   React.useEffect(() => {
-    const bootstrapAsync = async () => {
-      let token;
-
-      try {
-        token = await SecureStore.getItemAsync('userToken');
-      } catch (e) {
-        console.log(`No LOCAL TOKEN found: ${token}
-        Error code: ${e}`);
-      }
-      dispatch({ type: 'RESTORE_TOKEN', payload: { token } });
-    };
-
-    bootstrapAsync();
+    bootstrapAsync(dispatch);
   }, []);
 
   const authContext = React.useMemo(
