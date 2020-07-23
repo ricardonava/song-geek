@@ -8,12 +8,14 @@ export default async ({ token, id }) => {
       Authorization: `Bearer ${JSON.parse(token)}`
     }
   });
-  const data = await res.json();
-  let { key, mode } = data;
+  const song = await res.json();
+
+  let { key, mode } = song;
   mode = mode === 0 ? (mode = 'min') : (mode = 'maj');
   const pitch = key;
   key = pitchToKey(pitch);
 
-  const songInfo = { ...data, key, mode };
+  const songInfo = { ...song, key, mode };
+
   return songInfo;
 };

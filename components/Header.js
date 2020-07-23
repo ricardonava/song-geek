@@ -29,7 +29,7 @@ const Header = ({ scene, previous, navigation }) => {
     <AppbarHeader>
       {previous && <Appbar.BackAction onPress={goBack} />}
       <Appbar.Content title={title} />
-      {title !== 'Sign in' && <Appbar.Action icon="logout" onPress={signOut} />}
+      {title !== 'Sign In' && <Appbar.Action icon="logout" onPress={signOut} />}
     </AppbarHeader>
   );
 };

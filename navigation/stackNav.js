@@ -29,7 +29,7 @@ const StackNav = ({ state }) => {
           name="SignIn"
           component={SignInScreen}
           options={{
-            title: 'Sign in',
+            title: 'Sign In',
             animationTypeForReplace: state.isSignout ? 'pop' : 'push'
           }}
         />
