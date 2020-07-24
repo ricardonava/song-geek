@@ -10,7 +10,7 @@ import { RootNavigator } from './navigation/rootNavigator';
 import AuthContext from './utils/authContext';
 import getRefreshToken from './utils/getRefreshToken';
 import getToken from './utils/getToken';
-import authUrl from './utils/secret';
+import { authUrl } from './utils/secrets';
 
 const redirect = AuthSession.makeRedirectUri({ useProxy: true });
 

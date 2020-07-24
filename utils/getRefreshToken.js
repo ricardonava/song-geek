@@ -1,13 +1,10 @@
-import { encode as btoa } from 'base-64';
+import CREDS_B64 from './secrets';
 
 export default async function getRefreshToken(refreshToken) {
-  const credsB64 = btoa(
-    `f28d5216d2ff4152abe93aba6c2692ab:f6a17d02d6c74c28b617a8b99fe5b8f1`
-  );
   const tokenResponse = await fetch('https://accounts.spotify.com/api/token', {
     method: 'POST',
     headers: {
-      Authorization: `Basic ${credsB64}`,
+      Authorization: `Basic ${CREDS_B64}`,
       'Content-Type': 'application/x-www-form-urlencoded'
     },
     body: `grant_type=refresh_token&refresh_token=${refreshToken}`

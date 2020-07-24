@@ -8,6 +8,9 @@ npm-debug.*
 *.mobileprovision
 *.orig.*
 web-build/
+debug.log
+utils/clientCreds.js
+
 
 # macOS
 .DS_Store
@@ -17,4 +20,4 @@ _BACKUP_/BottomTabNavigator.js
 _BACKUP_/HomeScreen.js
 _BACKUP_/LinksScreen.js
 _BACKUP_/TabBarIcon.js
-debug.log
+utils/secrets.js
