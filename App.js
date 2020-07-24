@@ -8,6 +8,7 @@ import { DarkTheme, Provider as PaperProvider } from 'react-native-paper';
 import useAuthStateReducer from './hooks/useAuthStateReducer';
 import { RootNavigator } from './navigation/rootNavigator';
 import AuthContext from './utils/authContext';
+import getRefreshToken from './utils/getRefreshToken';
 import getToken from './utils/getToken';
 import authUrl from './utils/secret';
 
@@ -21,14 +22,14 @@ const theme = {
 };
 
 async function bootstrapAsync(dispatch) {
-  let token;
+  const refreshToken = await SecureStore.getItemAsync('refreshToken');
 
-  try {
-    token = await SecureStore.getItemAsync('userToken');
-  } catch (e) {
-    console.log(`No LOCAL TOKEN found: ${token}
-    Error code: ${e}`);
+  if (refreshToken !== null) {
+    const { access_token: newToken } = await getRefreshToken(refreshToken);
+    dispatch({ type: 'RESTORE_TOKEN', payload: { newToken } });
   }
+
+  const token = await SecureStore.getItemAsync('userToken');
   dispatch({ type: 'RESTORE_TOKEN', payload: { token } });
 }
 
@@ -53,13 +54,20 @@ export default function App() {
         } = await AuthSession.startAsync({
           authUrl
         });
-        const { access_token: token } = await getToken(code, redirect);
+        const {
+          access_token: token,
+          refresh_token: refreshToken
+        } = await getToken(code, redirect);
         await SecureStore.setItemAsync('userToken', token);
+        await SecureStore.setItemAsync('refreshToken', refreshToken);
+
         dispatch({ type: 'SIGN_IN', payload: { token } });
       },
 
       signOut: async () => {
         await SecureStore.deleteItemAsync('userToken');
+        await SecureStore.deleteItemAsync('refreshToken');
+
         dispatch({ type: 'SIGN_OUT' });
       }
     }),
