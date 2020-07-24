@@ -13,5 +13,6 @@ export default async function getRefreshToken(refreshToken) {
     body: `grant_type=refresh_token&refresh_token=${refreshToken}`
   });
   const responseJson = await tokenResponse.json();
+
   return responseJson;
 }

@@ -26,11 +26,14 @@ async function bootstrapAsync(dispatch) {
 
   if (refreshToken !== null) {
     const { access_token: newToken } = await getRefreshToken(refreshToken);
-    dispatch({ type: 'RESTORE_TOKEN', payload: { newToken } });
+    const token = newToken;
+    dispatch({ type: 'RESTORE_TOKEN', payload: { token } });
+    console.log('NEW TOKEN ' + newToken);
+  } else {
+    const token = await SecureStore.getItemAsync('userToken');
+    dispatch({ type: 'RESTORE_TOKEN', payload: { token } });
+    console.log('TOKEN ' + token);
   }
-
-  const token = await SecureStore.getItemAsync('userToken');
-  dispatch({ type: 'RESTORE_TOKEN', payload: { token } });
 }
 
 export default function App() {
