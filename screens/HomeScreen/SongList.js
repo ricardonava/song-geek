@@ -2,7 +2,7 @@ import * as SecureStore from 'expo-secure-store';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { FlatList } from 'react-native';
-import { ActivityIndicator, Divider, Surface } from 'react-native-paper';
+import { Divider, Surface } from 'react-native-paper';
 import styled from 'styled-components/native';
 import search from '../../utils/searchLikedSongs';
 import Item from './Item';
@@ -51,25 +51,21 @@ const SongList = ({ navigation }) => {
 
   return (
     <Container>
-      {songs.length === 0 ? (
-        <ActivityIndicator size="large" />
-      ) : (
-        <FlatList
-          data={songs}
-          renderItem={renderItem}
-          keyExtractor={(item) => item.id}
-          onEndReached={() => fetchSongs(setSongs, songs, offset, setOffset)}
-          ItemSeparatorComponent={Divider}
-          onEndReachedThreshold={0.1}
-          maxToRenderPerBatch={5}
-          updateCellsBatchingPeriod={20}
-          getItemLayout={(data, index) => ({
-            length: 80,
-            offset: 81 * index,
-            index
-          })}
-        />
-      )}
+      <FlatList
+        data={songs}
+        renderItem={renderItem}
+        keyExtractor={(item) => item.id}
+        onEndReached={() => fetchSongs(setSongs, songs, offset, setOffset)}
+        ItemSeparatorComponent={Divider}
+        onEndReachedThreshold={0.1}
+        maxToRenderPerBatch={5}
+        updateCellsBatchingPeriod={20}
+        getItemLayout={(data, index) => ({
+          length: 80,
+          offset: 81 * index,
+          index
+        })}
+      />
     </Container>
   );
 };

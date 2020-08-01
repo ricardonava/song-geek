@@ -4,7 +4,7 @@ import * as SecureStore from 'expo-secure-store';
 import * as WebBrowser from 'expo-web-browser';
 import * as React from 'react';
 import { Platform, StatusBar } from 'react-native';
-import { DarkTheme, Provider as PaperProvider } from 'react-native-paper';
+import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
 import useAuthStateReducer from './hooks/useAuthStateReducer';
 import { RootNavigator } from './navigation/rootNavigator';
 import AuthContext from './utils/authContext';
@@ -17,8 +17,13 @@ const redirect = AuthSession.makeRedirectUri({ useProxy: true });
 WebBrowser.maybeCompleteAuthSession();
 
 const theme = {
-  ...DarkTheme,
-  mode: 'adaptive'
+  ...DefaultTheme,
+  mode: 'adaptive',
+  colors: {
+    ...DefaultTheme.colors,
+    primary: '#352245',
+    accent: '#7ed957'
+  }
 };
 
 async function bootstrapAsync(dispatch) {
