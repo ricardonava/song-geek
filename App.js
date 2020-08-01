@@ -23,17 +23,16 @@ const theme = {
 
 async function bootstrapAsync(dispatch) {
   const refreshToken = await SecureStore.getItemAsync('refreshToken');
-
+  let token;
   if (refreshToken !== null) {
     const { access_token: newToken } = await getRefreshToken(refreshToken);
-    const token = newToken;
-    dispatch({ type: 'RESTORE_TOKEN', payload: { token } });
-    console.log('NEW TOKEN ' + newToken);
+    token = newToken;
+    await SecureStore.setItemAsync('userToken', token);
   } else {
-    const token = await SecureStore.getItemAsync('userToken');
-    dispatch({ type: 'RESTORE_TOKEN', payload: { token } });
-    console.log('TOKEN ' + token);
+    token = await SecureStore.getItemAsync('userToken');
   }
+
+  dispatch({ type: 'RESTORE_TOKEN', payload: { token } });
 }
 
 export default function App() {
