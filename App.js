@@ -84,7 +84,7 @@ export default function App() {
   return (
     <AuthContext.Provider value={authContext}>
       <PaperProvider theme={theme}>
-        {Platform.OS === 'ios' && <StatusBar barStyle="dark-content" />}
+        {Platform.OS === 'ios' && <StatusBar barStyle="light-content" />}
         <RootNavigator state={state} />
       </PaperProvider>
     </AuthContext.Provider>
