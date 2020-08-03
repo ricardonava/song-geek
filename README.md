@@ -7,7 +7,7 @@ with explicit authorization flow.
 
 
 ## Appetize.io
-[iOS](https://appetize.io/app/k328my5agcjc6bq6xe278khna0)
+[iOS](https://appetize.io/app/zx8wahq08g7155p0v6q6cuag8g)
 
 ## Android APK AWS
-[DOWNLOAD](https://exp-shell-app-assets.s3.us-west-1.amazonaws.com/android/%40ricardonava/song-geek-1bb7d89f726648b6ae86d4a892213685-signed.apk)
+[DOWNLOAD](https://exp-shell-app-assets.s3.us-west-1.amazonaws.com/android/%40ricardonava/song-geek-451541a6d0764ef1ab997247cb5240e3-signed.apk)
