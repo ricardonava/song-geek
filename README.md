@@ -1,8 +1,8 @@
-# song-geek
-React-Native app made with EXPO, React-Native Paper and Spotify API
+# Song Geek
+React-Native app made with EXPO, RN Paper, react-navigation and the Spotify API
 with explicit authorization flow.
 
-![GitHub Logo](https://developer.spotify.com/assets/AuthG_AuthoriztionCode.png)
+![Auth Diagram](https://developer.spotify.com/assets/AuthG_AuthoriztionCode.png)
 
 
 
