@@ -4,7 +4,6 @@ A React-Native app made with EXPO, RN Paper, react-navigation, and the Spotify A
 ![Auth Diagram](https://developer.spotify.com/assets/AuthG_AuthoriztionCode.png)
 
 ## Appetize.io
-[iOS](https://appetize.io/app/zx8wahq08g7155p0v6q6cuag8g)
 
 [android](https://appetize.io/app/b0yw4wdjvc64q8c9wndm03cgf8)
 
