@@ -54,7 +54,7 @@
     "eslint-plugin-react": "^7.20.0",
     "jest-expo": "~37.0.0",
     "prettier": "^2.0.5",
-    "stylelint": "^13.5.0",
+    "stylelint": "^15.10.1",
     "stylelint-config-standard": "^20.0.0",
     "stylelint-config-styled-components": "^0.1.1",
     "stylelint-processor-styled-components": "^1.10.0"
